@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment &amp; Examination | INFOSEC 101</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <a href="../index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="../index.html">🏠 Course Overview</option>
+        <option value="../Lesson 1/index.html">Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="../Lesson 2/index.html">Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="../Lesson 3/index.html">Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="../Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="../Activities/index.html">🎯 Case Study &amp; Activities</option>
+        <option value="../Projects/index.html">💼 School Capstone Project</option>
+        <option value="index.html" selected>📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../Lesson 1/index.html" class="nav-link">Lesson 1</a></li>
+      <li><a href="../Lesson 2/index.html" class="nav-link">Lesson 2</a></li>
+      <li><a href="../Lesson 3/index.html" class="nav-link">Lesson 3</a></li>
+      <li><a href="../Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="../Activities/index.html" class="nav-link">Activities</a></li>
+      <li><a href="../Projects/index.html" class="nav-link">Project</a></li>
+      <li><a href="index.html" class="nav-link active">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span>Module 1</span>
+      <span>/</span>
+      <span class="current">Assessments &amp; Evaluation</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag badge-rose">Examination Suite • 50 Objective Points</span>
+      <h1 class="hero-title">V. Assessment and Evaluation: Module 1</h1>
+      <p class="hero-subtitle">
+        Validate your mastery across the complete spectrum of Information Assurance. Includes automated instant grading for Part A (Multiple Choice), Part B (Identification), Part C (True/False), and sample expert solutions for Part D (Situational Analysis).
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item"><span>📝 Total Points:</span> <strong>50 Objective Points</strong></div>
+        <div class="meta-item"><span>⏱️ Suggested Time:</span> <strong>60 Minutes</strong></div>
+        <div class="meta-item"><span>📊 Grading:</span> <strong>Real-Time Instant Scoring &amp; Answer Analysis</strong></div>
+      </div>
+    </section>
+
+    <!-- Score Summary Floating Card -->
+    <div id="exam-scorecard" class="card" style="display: none; background: rgba(15, 23, 42, 0.95); border-color: var(--color-cyan); margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge-tag badge-emerald">Examination Completed</span>
+          <h2 style="margin: 0.2rem 0; color: #fff;">Your Examination Scorecard</h2>
+          <p id="score-summary-text" style="color: var(--text-muted); font-size: 0.95rem; margin: 0;"></p>
+        </div>
+        <div style="text-align: right;">
+          <div id="total-score-val" style="font-size: 2.5rem; font-weight: 800; color: var(--color-cyan); font-family: var(--font-mono);">0 / 35</div>
+          <button class="btn btn-secondary btn-sm" onclick="resetExam()">🔄 Retake Exam</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PART A: MULTIPLE CHOICE (15 Points) -->
+    <section class="section" id="part-a">
+      <div class="section-header">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="section-title">Part A: Multiple Choice (15 Points)</h2>
+            <p class="section-lead">Choose the letter of the correct answer for each foundational question.</p>
+          </div>
+          <span class="badge-tag">15 Points • 1 pt each</span>
+        </div>
+      </div>
+
+      <form id="mc-form">
+        <!-- Question 1 -->
+        <div class="quiz-item" id="mc-q1">
+          <div class="question-text">1. What is the primary purpose of Information Assurance?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc1" value="A"> A. To increase computer processing speed.</label>
+            <label class="option-label"><input type="radio" name="mc1" value="B"> B. To protect information and information systems.</label>
+            <label class="option-label"><input type="radio" name="mc1" value="C"> C. To develop computer games.</label>
+            <label class="option-label"><input type="radio" name="mc1" value="D"> D. To improve internet connectivity.</label>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-item" id="mc-q2">
+          <div class="question-text">2. Which CIA principle ensures that only authorized individuals can access information?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc2" value="A"> A. Availability</label>
+            <label class="option-label"><input type="radio" name="mc2" value="B"> B. Integrity</label>
+            <label class="option-label"><input type="radio" name="mc2" value="C"> C. Confidentiality</label>
+            <label class="option-label"><input type="radio" name="mc2" value="D"> D. Authentication</label>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-item" id="mc-q3">
+          <div class="question-text">3. Which CIA principle protects information from unauthorized modification?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc3" value="A"> A. Integrity</label>
+            <label class="option-label"><input type="radio" name="mc3" value="B"> B. Availability</label>
+            <label class="option-label"><input type="radio" name="mc3" value="C"> C. Confidentiality</label>
+            <label class="option-label"><input type="radio" name="mc3" value="D"> D. Authorization</label>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-item" id="mc-q4">
+          <div class="question-text">4. A university website becomes unavailable because of a cyberattack. Which principle is affected?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc4" value="A"> A. Confidentiality</label>
+            <label class="option-label"><input type="radio" name="mc4" value="B"> B. Availability</label>
+            <label class="option-label"><input type="radio" name="mc4" value="C"> C. Integrity</label>
+            <label class="option-label"><input type="radio" name="mc4" value="D"> D. Encryption</label>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="quiz-item" id="mc-q5">
+          <div class="question-text">5. What is a security threat?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc5" value="A"> A. A system update.</label>
+            <label class="option-label"><input type="radio" name="mc5" value="B"> B. A potential source of harm to an information system.</label>
+            <label class="option-label"><input type="radio" name="mc5" value="C"> C. A security policy.</label>
+            <label class="option-label"><input type="radio" name="mc5" value="D"> D. A database backup.</label>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="quiz-item" id="mc-q6">
+          <div class="question-text">6. What is a vulnerability?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc6" value="A"> A. A weakness in a system that can be exploited.</label>
+            <label class="option-label"><input type="radio" name="mc6" value="B"> B. A type of firewall.</label>
+            <label class="option-label"><input type="radio" name="mc6" value="C"> C. A security certification.</label>
+            <label class="option-label"><input type="radio" name="mc6" value="D"> D. A backup procedure.</label>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="quiz-item" id="mc-q7">
+          <div class="question-text">7. Which of the following is an example of phishing?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc7" value="A"> A. Installing antivirus software.</label>
+            <label class="option-label"><input type="radio" name="mc7" value="B"> B. Receiving a fake email requesting your password.</label>
+            <label class="option-label"><input type="radio" name="mc7" value="C"> C. Creating a database backup.</label>
+            <label class="option-label"><input type="radio" name="mc7" value="D"> D. Updating an operating system.</label>
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="quiz-item" id="mc-q8">
+          <div class="question-text">8. What is the main purpose of threat modeling?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc8" value="A"> A. To increase internet speed.</label>
+            <label class="option-label"><input type="radio" name="mc8" value="B"> B. To identify and analyze potential security threats.</label>
+            <label class="option-label"><input type="radio" name="mc8" value="C"> C. To remove all computer files.</label>
+            <label class="option-label"><input type="radio" name="mc8" value="D"> D. To design website layouts.</label>
+          </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="quiz-item" id="mc-q9">
+          <div class="question-text">9. What does STRIDE stand for in threat modeling?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc9" value="A"> A. Six types of security controls.</label>
+            <label class="option-label"><input type="radio" name="mc9" value="B"> B. Six categories of security threats.</label>
+            <label class="option-label"><input type="radio" name="mc9" value="C"> C. Six types of computer hardware.</label>
+            <label class="option-label"><input type="radio" name="mc9" value="D"> D. Six programming languages.</label>
+          </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="quiz-item" id="mc-q10">
+          <div class="question-text">10. Which STRIDE category involves unauthorized modification of information?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc10" value="A"> A. Spoofing</label>
+            <label class="option-label"><input type="radio" name="mc10" value="B"> B. Tampering</label>
+            <label class="option-label"><input type="radio" name="mc10" value="C"> C. Repudiation</label>
+            <label class="option-label"><input type="radio" name="mc10" value="D"> D. Denial of Service</label>
+          </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="quiz-item" id="mc-q11">
+          <div class="question-text">11. What is the primary purpose of a risk assessment?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc11" value="A"> A. To identify and evaluate potential security risks.</label>
+            <label class="option-label"><input type="radio" name="mc11" value="B"> B. To increase database storage.</label>
+            <label class="option-label"><input type="radio" name="mc11" value="C"> C. To install computer applications.</label>
+            <label class="option-label"><input type="radio" name="mc11" value="D"> D. To improve website appearance.</label>
+          </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="quiz-item" id="mc-q12">
+          <div class="question-text">12. Which security control is considered a technical control?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc12" value="A"> A. Employee training</label>
+            <label class="option-label"><input type="radio" name="mc12" value="B"> B. Security policies</label>
+            <label class="option-label"><input type="radio" name="mc12" value="C"> C. Firewall</label>
+            <label class="option-label"><input type="radio" name="mc12" value="D"> D. Security guards</label>
+          </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="quiz-item" id="mc-q13">
+          <div class="question-text">13. What does the Principle of Least Privilege mean?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc13" value="A"> A. Every user should have administrator access.</label>
+            <label class="option-label"><input type="radio" name="mc13" value="B"> B. Users should have only the permissions necessary for their responsibilities.</label>
+            <label class="option-label"><input type="radio" name="mc13" value="C"> C. All users should share one account.</label>
+            <label class="option-label"><input type="radio" name="mc13" value="D"> D. Users should have unlimited access.</label>
+          </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="quiz-item" id="mc-q14">
+          <div class="question-text">14. Which framework has six functions: Govern, Identify, Protect, Detect, Respond, and Recover?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc14" value="A"> A. STRIDE</label>
+            <label class="option-label"><input type="radio" name="mc14" value="B"> B. OCTAVE</label>
+            <label class="option-label"><input type="radio" name="mc14" value="C"> C. NIST CSF 2.0</label>
+            <label class="option-label"><input type="radio" name="mc14" value="D"> D. CIA Triad</label>
+          </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="quiz-item" id="mc-q15">
+          <div class="question-text">15. What does ISO/IEC 27001 focus on?</div>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="mc15" value="A"> A. Website development.</label>
+            <label class="option-label"><input type="radio" name="mc15" value="B"> B. Information Security Management Systems.</label>
+            <label class="option-label"><input type="radio" name="mc15" value="C"> C. Computer programming.</label>
+            <label class="option-label"><input type="radio" name="mc15" value="D"> D. Hardware manufacturing.</label>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- PART B: IDENTIFICATION (10 Points) -->
+    <section class="section" id="part-b">
+      <div class="section-header">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="section-title">Part B: Identification (10 Points)</h2>
+            <p class="section-lead">Type the correct technical cybersecurity term being described.</p>
+          </div>
+          <span class="badge-tag badge-emerald">10 Points • 1 pt each</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">1. The principle that ensures information remains accessible to authorized users.</label>
+              <input type="text" id="id-1" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">2. A weakness in an information system.</label>
+              <input type="text" id="id-2" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">3. A potential source of harm to an information system.</label>
+              <input type="text" id="id-3" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">4. The process of identifying and analyzing possible security threats.</label>
+              <input type="text" id="id-4" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">5. A method of categorizing threats into six categories developed by Microsoft.</label>
+              <input type="text" id="id-5" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+          </div>
+
+          <div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">6. A security mechanism that converts information into an unreadable format without the proper key.</label>
+              <input type="text" id="id-6" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">7. A method of evaluating risks based on likelihood and impact.</label>
+              <input type="text" id="id-7" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">8. A safeguard that protects systems from unauthorized network access.</label>
+              <input type="text" id="id-8" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">9. A risk treatment strategy that involves eliminating the activity that creates the risk.</label>
+              <input type="text" id="id-9" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-size:0.88rem; color:#cbd5e1; display:block; margin-bottom:0.35rem;">10. An international standard for Information Security Management Systems.</label>
+              <input type="text" id="id-10" placeholder="Enter term..." style="width:100%; padding:0.6rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:6px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART C: TRUE OR FALSE (10 Points) -->
+    <section class="section" id="part-c">
+      <div class="section-header">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="section-title">Part C: True or False (10 Points)</h2>
+            <p class="section-lead">Determine whether each security proposition is TRUE or FALSE.</p>
+          </div>
+          <span class="badge-tag badge-amber">10 Points • 1 pt each</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 70%;">Statement</th>
+                <th>Select Answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. Confidentiality ensures that only authorized individuals can access sensitive information.</td>
+                <td>
+                  <select id="tf-1" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>2. Integrity means that information should always be available.</td>
+                <td>
+                  <select id="tf-2" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>3. Availability is important for online enrollment systems.</td>
+                <td>
+                  <select id="tf-3" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>4. A weak password is an example of a vulnerability.</td>
+                <td>
+                  <select id="tf-4" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>5. Threat modeling is only performed after a cyberattack.</td>
+                <td>
+                  <select id="tf-5" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>6. STRIDE is a threat modeling framework.</td>
+                <td>
+                  <select id="tf-6" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>7. Risk assessment considers both likelihood and impact.</td>
+                <td>
+                  <select id="tf-7" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>8. Encryption can help protect confidentiality.</td>
+                <td>
+                  <select id="tf-8" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>9. Every employee should automatically receive administrator privileges.</td>
+                <td>
+                  <select id="tf-9" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>10. Security risks should be monitored continuously.</td>
+                <td>
+                  <select id="tf-10" style="background:#1e293b; color:#fff; padding:0.4rem; border:1px solid var(--border-color); border-radius:4px;">
+                    <option value="">--</option><option value="TRUE">TRUE</option><option value="FALSE">FALSE</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-top: 2rem; text-align: center;">
+        <button type="button" class="btn btn-primary btn-lg" onclick="gradeExam()">
+          🚀 Submit Examination &amp; Calculate Grade
+        </button>
+      </div>
+    </section>
+
+    <!-- PART D: SITUATIONAL ANALYSIS (15 Points) -->
+    <section class="section" id="part-d">
+      <div class="section-header">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="section-title">Part D: Situational Analysis (15 Points)</h2>
+            <p class="section-lead">Analyze realistic cybersecurity incidents and articulate defense controls.</p>
+          </div>
+          <span class="badge-tag badge-purple">15 Points • 5 pts per scenario</span>
+        </div>
+      </div>
+
+      <!-- Situation 1 -->
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <span class="badge-tag">Situation 1</span>
+        <h4 style="margin: 0.2rem 0 0.6rem 0;">The URL Parameter Vulnerability</h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          A university student discovers that another student can access their grades and personal demographic profile simply by incrementing or changing a number in the website's URL (e.g. <code>view_profile.php?id=1042</code>).
+        </p>
+        <div class="accordion" style="margin-top: 1rem;">
+          <div class="accordion-header">
+            <span>View Guided Questions &amp; Model Solution</span>
+            <span class="accordion-icon">➕</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>Q1: What security vulnerability exists?</strong><br>Answer: <strong>Broken Object Level Authorization (BOLA)</strong> or <strong>Insecure Direct Object Reference (IDOR)</strong>, combined with insufficient access control checks.</p>
+            <p><strong>Q2: Which CIA principle is affected?</strong><br>Answer: <strong>Confidentiality</strong>, because sensitive personal data is disclosed to unauthorized viewers.</p>
+            <p style="margin-bottom: 0;"><strong>Q3: What security control would you recommend?</strong><br>Answer: Server-side validation enforcing that the session user token matches the requested resource ID, combined with indirect reference maps (UUIDs) and RBAC authorization middleware.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Situation 2 -->
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <span class="badge-tag badge-amber">Situation 2</span>
+        <h4 style="margin: 0.2rem 0 0.6rem 0;">The First Day Enrollment Outage</h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          A university's enrollment website becomes completely unavailable during the first day of class registration because of excessive illegitimate traffic flood generated by external attackers.
+        </p>
+        <div class="accordion" style="margin-top: 1rem;">
+          <div class="accordion-header">
+            <span>View Guided Questions &amp; Model Solution</span>
+            <span class="accordion-icon">➕</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>Q1: What type of attack is occurring?</strong><br>Answer: <strong>Denial-of-Service (DoS)</strong> or <strong>Distributed Denial-of-Service (DDoS)</strong> attack.</p>
+            <p><strong>Q2: Which CIA principle is affected?</strong><br>Answer: <strong>Availability</strong>, because authorized students cannot access the registration service.</p>
+            <p style="margin-bottom: 0;"><strong>Q3: What security controls could prevent or reduce this incident?</strong><br>Answer: Cloud DDoS scrubbing (Cloudflare / AWS Shield), reverse proxy load balancers, rate limiting on HTTP requests, and dynamic auto-scaling web application clusters.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Situation 3 -->
+      <div class="card">
+        <span class="badge-tag badge-rose">Situation 3</span>
+        <h4 style="margin: 0.2rem 0 0.6rem 0;">The Rogue Employee &amp; Wiped Logs</h4>
+        <p style="font-size: 0.92rem; color: var(--text-muted);">
+          An employee alters student grades without authorization and subsequently deletes the local system activity logs to hide the illicit activity.
+        </p>
+        <div class="accordion" style="margin-top: 1rem;">
+          <div class="accordion-header">
+            <span>View Guided Questions &amp; Model Solution</span>
+            <span class="accordion-icon">➕</span>
+          </div>
+          <div class="accordion-content">
+            <p><strong>Q1: What two security principles are affected?</strong><br>Answer: <strong>Integrity</strong> (unauthorized alteration of grade records) and <strong>Availability / Accountability / Non-Repudiation</strong> (erasure of audit trails).</p>
+            <p><strong>Q2: Which STRIDE categories are involved?</strong><br>Answer: <strong>Tampering</strong> (altering records and modifying log files) and <strong>Repudiation</strong> (deleting evidence so the employee can deny the action).</p>
+            <p style="margin-bottom: 0;"><strong>Q3: What security controls could prevent or detect this activity?</strong><br>Answer: Separation of duties, centralized write-once immutable logging (WORM / SIEM) shipped in real time to an isolated server where even admins cannot delete records, and cryptographic file integrity monitoring (FIM).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTRUCTOR ANSWER KEY TOGGLE ZONE -->
+    <section class="section" id="instructor-key-zone">
+      <div class="card" style="border: 2px dashed rgba(245, 158, 11, 0.4); background: rgba(30, 41, 59, 0.5);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span class="badge-tag badge-amber">VI. Instructor Reference</span>
+            <h3 style="margin: 0.2rem 0; color: #fff;">Official Examination Answer Key</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">For faculty verification and student self-assessment review.</p>
+          </div>
+          <button id="btn-toggle-key" class="btn btn-secondary" onclick="toggleAnswerKey()">
+            👁️ Reveal Complete Answer Key
+          </button>
+        </div>
+
+        <div id="instructor-key-content" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+          <div class="grid-3">
+            <div>
+              <h4 style="color: var(--color-cyan); margin-top: 0;">Part A Answers (MCQ)</h4>
+              <ol style="font-size: 0.85rem; line-height: 1.7; color: #cbd5e1;">
+                <li><strong>B</strong> (Protect information and systems)</li>
+                <li><strong>C</strong> (Confidentiality)</li>
+                <li><strong>A</strong> (Integrity)</li>
+                <li><strong>B</strong> (Availability)</li>
+                <li><strong>B</strong> (Potential source of harm)</li>
+                <li><strong>A</strong> (Weakness that can be exploited)</li>
+                <li><strong>B</strong> (Fake email requesting password)</li>
+                <li><strong>B</strong> (Identify &amp; analyze threats)</li>
+                <li><strong>B</strong> (Six threat categories)</li>
+                <li><strong>B</strong> (Tampering)</li>
+                <li><strong>A</strong> (Identify &amp; evaluate risks)</li>
+                <li><strong>C</strong> (Firewall)</li>
+                <li><strong>B</strong> (Only necessary permissions)</li>
+                <li><strong>C</strong> (NIST CSF 2.0)</li>
+                <li><strong>B</strong> (ISMS)</li>
+              </ol>
+            </div>
+
+            <div>
+              <h4 style="color: var(--color-emerald); margin-top: 0;">Part B Answers (ID)</h4>
+              <ol style="font-size: 0.85rem; line-height: 1.7; color: #cbd5e1;">
+                <li>Availability</li>
+                <li>Vulnerability</li>
+                <li>Threat</li>
+                <li>Threat Modeling</li>
+                <li>STRIDE</li>
+                <li>Encryption</li>
+                <li>Risk Assessment / Risk Matrix</li>
+                <li>Firewall</li>
+                <li>Risk Avoidance</li>
+                <li>ISO/IEC 27001</li>
+              </ol>
+            </div>
+
+            <div>
+              <h4 style="color: var(--color-amber); margin-top: 0;">Part C Answers (T/F)</h4>
+              <ol style="font-size: 0.85rem; line-height: 1.7; color: #cbd5e1;">
+                <li><strong>TRUE</strong></li>
+                <li><strong>FALSE</strong> (Integrity = accuracy)</li>
+                <li><strong>TRUE</strong></li>
+                <li><strong>TRUE</strong></li>
+                <li><strong>FALSE</strong> (Proactive in design)</li>
+                <li><strong>TRUE</strong></li>
+                <li><strong>TRUE</strong></li>
+                <li><strong>TRUE</strong></li>
+                <li><strong>FALSE</strong> (Violates PoLP)</li>
+                <li><strong>TRUE</strong></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <div class="lesson-nav-bar">
+      <a href="../Projects/index.html" class="lesson-nav-btn">
+        <span class="sub">Previous Deliverable</span>
+        <span class="title">⬅️ School Capstone Project</span>
+      </a>
+
+      <a href="../Activities/index.html" class="btn btn-secondary">
+        <span>🎯 Review Practical Labs</span>
+      </a>
+
+      <a href="../index.html" class="lesson-nav-btn" style="text-align: right;">
+        <span class="sub">Complete Course</span>
+        <span class="title">Main Course Portal 🏠</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">Comprehensive 50-Point Examination &amp; Evaluation Suite</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Course Portal</a></li>
+        <li><a href="../Lesson 1/index.html">Lesson 1</a></li>
+        <li><a href="../Lesson 2/index.html">Lesson 2</a></li>
+        <li><a href="../Lesson 3/index.html">Lesson 3</a></li>
+        <li><a href="../Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="../Activities/index.html">Activities</a></li>
+        <li><a href="../Projects/index.html">Projects</a></li>
+        <li><a href="index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js"></script>
+  <script>
+    const mcKeys = {
+      mc1: 'B', mc2: 'C', mc3: 'A', mc4: 'B', mc5: 'B',
+      mc6: 'A', mc7: 'B', mc8: 'B', mc9: 'B', mc10: 'B',
+      mc11: 'A', mc12: 'C', mc13: 'B', mc14: 'C', mc15: 'B'
+    };
+
+    const idKeys = {
+      'id-1': ['availability'],
+      'id-2': ['vulnerability', 'weakness'],
+      'id-3': ['threat', 'threat actor'],
+      'id-4': ['threat modeling', 'threat analysis'],
+      'id-5': ['stride'],
+      'id-6': ['encryption', 'cipher', 'cryptography'],
+      'id-7': ['risk assessment', 'risk matrix', 'risk calculation'],
+      'id-8': ['firewall', 'ngfw'],
+      'id-9': ['risk avoidance', 'avoidance'],
+      'id-10': ['iso/iec 27001', 'iso 27001', 'iso27001']
+    };
+
+    const tfKeys = {
+      'tf-1': 'TRUE',
+      'tf-2': 'FALSE',
+      'tf-3': 'TRUE',
+      'tf-4': 'TRUE',
+      'tf-5': 'FALSE',
+      'tf-6': 'TRUE',
+      'tf-7': 'TRUE',
+      'tf-8': 'TRUE',
+      'tf-9': 'FALSE',
+      'tf-10': 'TRUE'
+    };
+
+    function gradeExam() {
+      let scoreA = 0;
+      let scoreB = 0;
+      let scoreC = 0;
+
+      // Grade Part A
+      for (let i = 1; i <= 15; i++) {
+        const rads = document.getElementsByName(`mc${i}`);
+        let chosen = '';
+        rads.forEach(r => {
+          r.parentElement.classList.remove('correct', 'incorrect');
+          if (r.checked) chosen = r.value;
+        });
+
+        const correctVal = mcKeys[`mc${i}`];
+        rads.forEach(r => {
+          if (r.value === correctVal) r.parentElement.classList.add('correct');
+          else if (r.checked && r.value !== correctVal) r.parentElement.classList.add('incorrect');
+        });
+
+        if (chosen === correctVal) scoreA++;
+      }
+
+      // Grade Part B
+      for (let i = 1; i <= 10; i++) {
+        const inp = document.getElementById(`id-${i}`);
+        const userVal = inp.value.trim().toLowerCase();
+        const accepted = idKeys[`id-${i}`];
+        const isCorrect = accepted.some(acc => userVal.includes(acc));
+
+        if (isCorrect) {
+          scoreB++;
+          inp.style.borderColor = '#10b981';
+          inp.style.background = 'rgba(16, 185, 129, 0.15)';
+        } else {
+          inp.style.borderColor = '#f43f5e';
+          inp.style.background = 'rgba(244, 63, 94, 0.15)';
+        }
+      }
+
+      // Grade Part C
+      for (let i = 1; i <= 10; i++) {
+        const sel = document.getElementById(`tf-${i}`);
+        const userVal = sel.value;
+        const correctVal = tfKeys[`tf-${i}`];
+
+        if (userVal === correctVal) {
+          scoreC++;
+          sel.style.borderColor = '#10b981';
+          sel.style.color = '#34d399';
+        } else {
+          sel.style.borderColor = '#f43f5e';
+          sel.style.color = '#f87171';
+        }
+      }
+
+      const totalScore = scoreA + scoreB + scoreC;
+      const pct = Math.round((totalScore / 35) * 100);
+
+      const card = document.getElementById('exam-scorecard');
+      card.style.display = 'block';
+      document.getElementById('total-score-val').textContent = `${totalScore} / 35`;
+      document.getElementById('score-summary-text').innerHTML = `
+        Part A (MCQ): <strong>${scoreA}/15</strong> • 
+        Part B (ID): <strong>${scoreB}/10</strong> • 
+        Part C (T/F): <strong>${scoreC}/10</strong> 
+        <br>Accuracy: <strong>${pct}%</strong> ${pct >= 75 ? '🎉 Outstanding Master of IA!' : 'Keep practicing and reviewing the lessons!'}
+      `;
+
+      card.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetExam() {
+      document.getElementById('mc-form').reset();
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('correct', 'incorrect'));
+      
+      for (let i = 1; i <= 10; i++) {
+        const inp = document.getElementById(`id-${i}`);
+        inp.value = '';
+        inp.style.borderColor = 'var(--border-color)';
+        inp.style.background = '#1e293b';
+
+        const sel = document.getElementById(`tf-${i}`);
+        sel.value = '';
+        sel.style.borderColor = 'var(--border-color)';
+        sel.style.color = '#fff';
+      }
+
+      document.getElementById('exam-scorecard').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleAnswerKey() {
+      const content = document.getElementById('instructor-key-content');
+      const btn = document.getElementById('btn-toggle-key');
+      const isHidden = content.style.display === 'none';
+
+      if (isHidden) {
+        content.style.display = 'block';
+        btn.textContent = '🔒 Hide Answer Key';
+      } else {
+        content.style.display = 'none';
+        btn.textContent = '👁️ Reveal Complete Answer Key';
+      }
+    }
+  </script>
+</body>
+</html>

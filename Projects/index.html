@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Project: Basic Information Security Risk Assessment | INFOSEC 101</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .navbar, .lesson-nav-bar, footer, .btn, .nav-selector, .no-print { display: none !important; }
+      .container { max-width: 100% !important; padding: 0 !important; }
+      .card, .callout { border: 1px solid #ccc !important; background: #fff !important; color: #000 !important; box-shadow: none !important; }
+      h1, h2, h3, h4, strong { color: #000 !important; }
+      p, li, td, th { color: #222 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar no-print">
+    <a href="../index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="../index.html">🏠 Course Overview</option>
+        <option value="../Lesson 1/index.html">Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="../Lesson 2/index.html">Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="../Lesson 3/index.html">Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="../Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="../Activities/index.html">🎯 Case Study &amp; Activities</option>
+        <option value="index.html" selected>💼 School Capstone Project</option>
+        <option value="../Assessments/index.html">📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../Lesson 1/index.html" class="nav-link">Lesson 1</a></li>
+      <li><a href="../Lesson 2/index.html" class="nav-link">Lesson 2</a></li>
+      <li><a href="../Lesson 3/index.html" class="nav-link">Lesson 3</a></li>
+      <li><a href="../Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="../Activities/index.html" class="nav-link">Activities</a></li>
+      <li><a href="index.html" class="nav-link active">Project</a></li>
+      <li><a href="../Assessments/index.html" class="nav-link">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs no-print">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span>Module 1</span>
+      <span>/</span>
+      <span class="current">School Capstone Project</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag badge-purple">Institutional Project Assignment • 20 Points</span>
+      <h1 class="hero-title">Conducting a Basic Information Security Risk Assessment</h1>
+      <p class="hero-subtitle">
+        Design and author a comprehensive executive risk assessment dossier for an enterprise digital system. Analyze business assets, threat actors, systemic vulnerabilities, CIA requirements, risk scores, and technical controls.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item"><span>📋 Points:</span> <strong>20 Points</strong></div>
+        <div class="meta-item"><span>📁 Folder:</span> <strong>/Projects</strong></div>
+        <div class="meta-item"><span>🎓 Deliverable:</span> <strong>Formal Executive Risk Assessment Report</strong></div>
+      </div>
+    </section>
+
+    <!-- Project Specifications & Options -->
+    <section class="section no-print">
+      <div class="section-header">
+        <h2 class="section-title">📌 Project Assignment Overview</h2>
+        <p class="section-lead">Select one of the five approved target systems below to serve as your organization of study:</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" onclick="selectSystemPreset('sis')" style="cursor: pointer; border-color: rgba(6, 182, 212, 0.4);">
+          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🎓</div>
+          <h4 style="margin: 0 0 0.4rem 0;">Option A: Student Enrollment System</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">University SIS handling transcripts, grades, enrollment schedules, and tuition billing.</p>
+        </div>
+
+        <div class="card" onclick="selectSystemPreset('bank')" style="cursor: pointer; border-color: rgba(16, 185, 129, 0.4);">
+          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🏦</div>
+          <h4 style="margin: 0 0 0.4rem 0;">Option B: Online Banking System</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Financial platform managing customer deposits, wire transfers, cards, and loan accounts.</p>
+        </div>
+
+        <div class="card" onclick="selectSystemPreset('hospital')" style="cursor: pointer; border-color: rgba(244, 63, 94, 0.4);">
+          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🏥</div>
+          <h4 style="margin: 0 0 0.4rem 0;">Option C: Hospital Management System</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Clinical EHR infrastructure tracking patient medical records, surgeries, and prescriptions.</p>
+        </div>
+
+        <div class="card" onclick="selectSystemPreset('ecom')" style="cursor: pointer; border-color: rgba(245, 158, 11, 0.4);">
+          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">🛒</div>
+          <h4 style="margin: 0 0 0.4rem 0;">Option D: E-Commerce Retail Platform</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Online retail storefront managing customer orders, payment gateways, and warehouse inventory.</p>
+        </div>
+
+        <div class="card" onclick="selectSystemPreset('library')" style="cursor: pointer; border-color: rgba(168, 85, 247, 0.4);">
+          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">📚</div>
+          <h4 style="margin: 0 0 0.4rem 0;">Option E: Academic Library System</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">Digital catalog repository tracking research journals, patron borrowing, and licensing keys.</p>
+        </div>
+
+        <div class="card" style="background: rgba(30, 41, 59, 0.4); justify-content: center; align-items: center; text-align: center;">
+          <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 Project Report Requirements Checklist -->
+    <section class="section no-print">
+      <div class="section-header">
+        <h2 class="section-title">📝 Mandatory Report Structure (8 Sections)</h2>
+        <p class="section-lead">Each submission must address all 8 technical sections in detail:</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <ul style="font-size: 0.9rem; line-height: 1.9; margin-bottom: 0;">
+            <li><strong>1. System Description:</strong> Operational purpose, users, and tech architecture.</li>
+            <li><strong>2. Important Assets (Min 5):</strong> Critical hardware, software, data, and human assets.</li>
+            <li><strong>3. Potential Threats (Min 5):</strong> Specific malicious and non-malicious threat actors.</li>
+            <li><strong>4. Vulnerabilities (Min 5):</strong> Concrete software, network, human, or physical flaws.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul style="font-size: 0.9rem; line-height: 1.9; margin-bottom: 0;">
+            <li><strong>5. CIA Triad Analysis:</strong> How Confidentiality, Integrity, &amp; Availability apply.</li>
+            <li><strong>6. Risk Assessment Matrix:</strong> At least 3 risks evaluated with \( L \times I \) scoring.</li>
+            <li><strong>7. Security Recommendations (Min 5):</strong> Actionable technical &amp; admin controls.</li>
+            <li><strong>8. Executive Conclusion:</strong> Summary of why Information Assurance ensures survival.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Report Builder / Template Preview -->
+    <section class="section" id="report-section">
+      <div class="section-header no-print">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 class="section-title">📄 Project Report Builder &amp; Live Document</h2>
+            <p class="section-lead">You can edit the content below directly in your browser, review formatted sections, and print as your submitted coursework!</p>
+          </div>
+          <button class="btn btn-primary" onclick="window.print()">🖨️ Print Final Report</button>
+        </div>
+      </div>
+
+      <!-- Formal Printable Document Paper -->
+      <div id="printable-report" class="card" style="background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(56, 189, 248, 0.3); padding: 2.5rem;">
+        <div style="border-bottom: 2px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span class="badge-tag badge-purple">Coursework Deliverable</span>
+            <h1 id="rep-system-title" style="font-size: 1.9rem; margin: 0.4rem 0; color: #fff;">Information Security Risk Assessment Report</h1>
+            <p id="rep-system-sub" style="color: var(--color-cyan); font-weight: 600; margin: 0;">Target System: University Student Enrollment System</p>
+          </div>
+          <div style="text-align: right; font-size: 0.85rem; color: var(--text-dim);">
+            <div><strong>Course:</strong> INFOSEC 101 (MWF 10:30am - 11:30am)</div>
+            <div><strong>Term:</strong> College Semester Project</div>
+            <div><strong>Status:</strong> Ready for Evaluation</div>
+          </div>
+        </div>
+
+        <!-- Section 1 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan); margin-top: 0;">1. System Description</h3>
+          <p id="rep-sec-1" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            The target system is an enterprise web application enabling users to authenticate, query records, process financial transactions, and maintain account state. It features a three-tier architecture: frontend web portal (Vue/React), microservice REST API gateway, and relational SQL database storage tier.
+          </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan);">2. Important Assets Requiring Protection (Minimum 5)</h3>
+          <div id="rep-sec-2" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            <ul>
+              <li><strong>Asset 1: Relational Database Records</strong> — Master database containing personal identities, passwords, and historical logs.</li>
+              <li><strong>Asset 2: Financial Transaction Processing Engine</strong> — Billing and gateway ledger services executing real-time payments.</li>
+              <li><strong>Asset 3: User Authentication Credentials</strong> — Password hashes, session tokens, and cryptographic private keys.</li>
+              <li><strong>Asset 4: Web Application Server Fleet</strong> — Linux production servers running active customer-facing API microservices.</li>
+              <li><strong>Asset 5: Administrative Master Accounts</strong> — High-privilege identity accounts capable of altering schema and rights.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan);">3. Potential Threats (Minimum 5)</h3>
+          <div id="rep-sec-3" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            <ul>
+              <li><strong>Threat 1: External Cybercrime Syndicates</strong> — Malicious actors attempting ransomware extortion and data exfiltration.</li>
+              <li><strong>Threat 2: Credential Stuffing &amp; Phishing Actors</strong> — Adversaries targeting staff with counterfeit authentication portals.</li>
+              <li><strong>Threat 3: Distributed Denial of Service (DDoS) Botnets</strong> — High-volume volumetric flood attacks aimed at knocking services offline.</li>
+              <li><strong>Threat 4: Malicious Insiders</strong> — Disgruntled employees or contractors attempting unauthorized record alteration or theft.</li>
+              <li><strong>Threat 5: Environmental &amp; Hardware Disruptions</strong> — Power grid collapse, server rack disk failure, and natural hazards.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan);">4. Systemic Vulnerabilities (Minimum 5)</h3>
+          <div id="rep-sec-4" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            <ul>
+              <li><strong>Vulnerability 1: Weak Default Password Policies</strong> — Allowing users to choose short, predictable passwords without MFA.</li>
+              <li><strong>Vulnerability 2: Outdated Web Server Frameworks</strong> — Running older runtime versions containing known CVE vulnerabilities.</li>
+              <li><strong>Vulnerability 3: Missing Database Network Segmentation</strong> — Direct database port exposure to public subnets.</li>
+              <li><strong>Vulnerability 4: Lack of Automated Immutable Backups</strong> — No off-site snapshot backups configured for disaster recovery.</li>
+              <li><strong>Vulnerability 5: Inadequate Employee Security Training</strong> — Staff lacking awareness to detect modern spear-phishing lures.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan);">5. CIA Triad Analysis</h3>
+          <div id="rep-sec-5" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            <p><strong>• Confidentiality:</strong> Ensuring confidential user records, billing details, and personal transcripts can only be accessed by authorized identity holders through strict Role-Based Access Control and AES-256 encryption.</p>
+            <p><strong>• Integrity:</strong> Preventing unauthorized modification, tampering, or deletion of ledger balances and official records through SHA-256 cryptographic hashing, database constraints, and immutable audit trails.</p>
+            <p><strong>• Availability:</strong> Guaranteeing uninterrupted system accessibility for students, employees, and administrators through redundant load-balanced clusters, UPS power, and Cloudflare DDoS filtering.</p>
+          </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan);">6. Risk Assessment Matrix &amp; Scoring</h3>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Identified Risk Scenario</th>
+                  <th>Likelihood (1–5)</th>
+                  <th>Impact (1–5)</th>
+                  <th>Risk Score (\( L \times I \))</th>
+                  <th>Priority Level</th>
+                </tr>
+              </thead>
+              <tbody id="rep-risk-table" contenteditable="true">
+                <tr>
+                  <td>Ransomware encryption of core database</td>
+                  <td>3 (Possible)</td>
+                  <td>5 (Catastrophic)</td>
+                  <td><strong>15 / 25</strong></td>
+                  <td><span class="badge-tag badge-rose">High / Critical</span></td>
+                </tr>
+                <tr>
+                  <td>Admin account takeover via weak credentials</td>
+                  <td>4 (Likely)</td>
+                  <td>5 (Catastrophic)</td>
+                  <td><strong>20 / 25</strong></td>
+                  <td><span class="badge-tag badge-rose">Critical Priority</span></td>
+                </tr>
+                <tr>
+                  <td>Portal DDoS outage during registration</td>
+                  <td>4 (Likely)</td>
+                  <td>4 (Severe)</td>
+                  <td><strong>16 / 25</strong></td>
+                  <td><span class="badge-tag badge-amber">High Priority</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 7 -->
+        <div style="margin-bottom: 1.75rem;">
+          <h3 style="color: var(--color-cyan);">7. Actionable Security Recommendations (Minimum 5 Controls)</h3>
+          <div id="rep-sec-7" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            <ol>
+              <li><strong>Control 1 (Technical):</strong> Mandate Multi-Factor Authentication (MFA) with FIDO2 or TOTP for all administrator and user logins.</li>
+              <li><strong>Control 2 (Technical):</strong> Enforce TLS 1.3 for all web traffic and AES-256 encryption at rest for database data storage volumes.</li>
+              <li><strong>Control 3 (Technical):</strong> Configure automated daily 3-2-1 immutable cloud backups with monthly disaster recovery dry-runs.</li>
+              <li><strong>Control 4 (Administrative):</strong> Formulate and enforce an institutional Information Security Policy and annual security awareness training.</li>
+              <li><strong>Control 5 (Physical):</strong> Restrict server room facility entry using biometric readers, dual-signoff logs, and CCTV surveillance.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Section 8 -->
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="color: var(--color-cyan);">8. Executive Conclusion</h3>
+          <p id="rep-sec-8" contenteditable="true" style="padding: 0.5rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 4px;">
+            Information Assurance is not a superficial software plug-in; it is the vital foundation sustaining modern organizational operations. By systematically categorizing assets, evaluating threats with STRIDE, remediating system vulnerabilities, and enforcing defense-in-depth controls, our institution guarantees the ongoing confidentiality, integrity, and availability of its vital digital mission.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grading Rubric Card -->
+    <section class="section no-print">
+      <div class="section-header">
+        <h2 class="section-title">📊 20-Point Evaluative Grading Rubric</h2>
+        <p class="section-lead">Criteria utilized by faculty instructors to grade your risk assessment deliverable:</p>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Evaluation Criteria</th>
+              <th>Max Points</th>
+              <th>Mastery Standard (Full Points)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Asset &amp; System Description</strong></td>
+              <td>3 Points</td>
+              <td>Clear operational context; at least 5 vital assets identified and justified.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Threat &amp; Vulnerability Enumeration</strong></td>
+              <td>4 Points</td>
+              <td>At least 5 threats and 5 vulnerabilities accurately differentiated and mapped.</td>
+            </tr>
+            <tr>
+              <td><strong>3. CIA Triad In-Depth Analysis</strong></td>
+              <td>4 Points</td>
+              <td>Comprehensive analysis linking Confidentiality, Integrity, and Availability to system assets.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Risk Matrix &amp; Score Calculation</strong></td>
+              <td>4 Points</td>
+              <td>Mathematical application of \( \text{Likelihood} \times \text{Impact} \) with prioritized ranking.</td>
+            </tr>
+            <tr>
+              <td><strong>5. Security Control Recommendations</strong></td>
+              <td>3 Points</td>
+              <td>At least 5 realistic, actionable controls spanning Technical, Admin, and Physical domains.</td>
+            </tr>
+            <tr>
+              <td><strong>6. Conclusion &amp; Formatting</strong></td>
+              <td>2 Points</td>
+              <td>Professional synthesis, academic grammar, and compelling executive rationale.</td>
+            </tr>
+            <tr>
+              <td><strong>TOTAL SCORE</strong></td>
+              <td><strong>20 Points</strong></td>
+              <td><strong>Complete Capstone Portfolio Piece</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bottom Lesson Navigation -->
+    <div class="lesson-nav-bar no-print">
+      <a href="../Activities/index.html" class="lesson-nav-btn">
+        <span class="sub">Previous Step</span>
+        <span class="title">⬅️ Case Study Activities</span>
+      </a>
+
+      <a href="../Assessments/index.html" class="btn btn-primary">
+        <span>📝 Proceed to 50-Point Examination ➔</span>
+      </a>
+
+      <a href="../index.html" class="lesson-nav-btn" style="text-align: right;">
+        <span class="sub">Course Home</span>
+        <span class="title">Back to Main Portal 🏠</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="no-print">
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">School Project: Information Security Risk Assessment</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Course Portal</a></li>
+        <li><a href="../Lesson 1/index.html">Lesson 1</a></li>
+        <li><a href="../Lesson 2/index.html">Lesson 2</a></li>
+        <li><a href="../Lesson 3/index.html">Lesson 3</a></li>
+        <li><a href="../Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="../Activities/index.html">Activities</a></li>
+        <li><a href="index.html">Project</a></li>
+        <li><a href="../Assessments/index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js"></script>
+  <script>
+    const systemPresets = {
+      sis: {
+        title: "University Student Enrollment System",
+        sub: "Target System: University SIS & Transcript Database",
+        desc: "An enterprise university portal enabling 25,000 students to register for academic subjects, process tuition payments, view grade transcripts, and manage personal identifying records.",
+        assets: [
+          "Student Academic Transcripts & GPA Records",
+          "Tuition Payment & Credit Card Gateway API",
+          "Faculty & Registrar Administrative Accounts",
+          "Apache/Nginx Web Application Clusters",
+          "MySQL Relational Database Storage Cluster"
+        ]
+      },
+      bank: {
+        title: "Online Core Banking & Payment System",
+        sub: "Target System: Retail Bank Customer Web & API Platform",
+        desc: "A mission-critical fintech banking platform serving 200,000 account holders, processing real-time electronic fund transfers (ACH/SWIFT), loan records, and debit authorizations.",
+        assets: [
+          "Core Financial Ledger & Customer Deposit Balances",
+          "Automated Clearing House (ACH) & Wire Transfer API",
+          "HSM Hardware Security Modules & Master Encryption Keys",
+          "Online Banking Customer Authentication Database",
+          "Fraud Detection & Transaction Surveillance Servers"
+        ]
+      },
+      hospital: {
+        title: "Hospital Electronic Health Record (EHR) System",
+        sub: "Target System: Hospital Clinical Management & EHR Platform",
+        desc: "A healthcare system managing real-time electronic health records (EHR), surgery operating schedules, diagnostic imaging (PACS/DICOM), and drug prescription dispensing.",
+        assets: [
+          "Patient Electronic Medical Records (HIPAA / Protected Health Info)",
+          "Real-time ICU Patient Telemetry & Life-Support IoT",
+          "Pharmacy Prescription Ordering & Dispensing Engine",
+          "Physician & Surgeon Biometric Login Credentials",
+          "On-Premise PACS Diagnostic Radiology Server Fleet"
+        ]
+      },
+      ecom: {
+        title: "Global E-Commerce Retail Platform",
+        sub: "Target System: High-Traffic Retail Storefront & Fulfillment Engine",
+        desc: "A commercial shopping platform processing 10,000 orders hourly, interfacing with third-party payment processors, global logistics warehouses, and user identity accounts.",
+        assets: [
+          "Customer Payment Token Vault & Billing Profiles",
+          "Real-Time Warehouse Inventory Management Database",
+          "Payment Gateway Integration Webhooks & API Keys",
+          "Customer Order History & Personal Shipping Addresses",
+          "Kubernetes Containerized Web Storefront Cluster"
+        ]
+      },
+      library: {
+        title: "Academic Research Library & Digital Archive",
+        sub: "Target System: Institutional Research Repository & Catalog",
+        desc: "A university digital library catalog managing licensed academic journal subscriptions, patented research dissertations, patron borrowing histories, and digital rights tokens.",
+        assets: [
+          "Proprietary Academic Research Papers & Dissertations",
+          "Digital Rights Management (DRM) Licensing Token Server",
+          "Patron Borrowing History & Contact Directory",
+          "Integrated Library Catalog (ILS) Database",
+          "Public OPAC Web Search Terminals"
+        ]
+      }
+    };
+
+    function selectSystemPreset(key) {
+      const p = systemPresets[key];
+      if (!p) return;
+
+      document.getElementById('rep-system-title').textContent = `${p.title} - Security Risk Assessment`;
+      document.getElementById('rep-system-sub').textContent = p.sub;
+      document.getElementById('rep-sec-1').textContent = p.desc;
+      
+      const assetList = p.assets.map((a, i) => `<li><strong>Asset ${i+1}:</strong> ${a}</li>`).join('');
+      document.getElementById('rep-sec-2').innerHTML = `<ul>${assetList}</ul>`;
+
+      alert(`Loaded preset: ${p.title}. You can now customize any field and print!`);
+    }
+  </script>
+</body>
+</html>

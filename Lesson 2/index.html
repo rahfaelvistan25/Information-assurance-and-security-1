@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Threat Modeling &amp; Cybersecurity Threats | INFOSEC 101</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <a href="../index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="../index.html">🏠 Course Overview</option>
+        <option value="../Lesson 1/index.html">Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="index.html" selected>Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="../Lesson 3/index.html">Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="../Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="../Activities/index.html">🎯 Case Study &amp; Activities</option>
+        <option value="../Projects/index.html">💼 School Capstone Project</option>
+        <option value="../Assessments/index.html">📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../Lesson 1/index.html" class="nav-link">Lesson 1</a></li>
+      <li><a href="index.html" class="nav-link active">Lesson 2</a></li>
+      <li><a href="../Lesson 3/index.html" class="nav-link">Lesson 3</a></li>
+      <li><a href="../Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="../Activities/index.html" class="nav-link">Activities</a></li>
+      <li><a href="../Assessments/index.html" class="nav-link">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span>Module 1</span>
+      <span>/</span>
+      <span class="current">Lesson 2: Threat Modeling &amp; STRIDE</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag badge-amber">Session 2 of 4 • 90 Minutes</span>
+      <h1 class="hero-title">LESSON 2: Threat Modeling and Cybersecurity Threats</h1>
+      <p class="hero-subtitle">
+        Think like an adversary to proactively defend your infrastructure. Master modern cybersecurity threat classifications, the 6-step threat modeling lifecycle, Microsoft's STRIDE framework, and attack surface reduction.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item"><span>📖 Lesson ID:</span> <strong>MOD1-LES02</strong></div>
+        <div class="meta-item"><span>⏱️ Duration:</span> <strong>90 Minutes</strong></div>
+        <div class="meta-item"><span>🎯 Key Focus:</span> <strong>Threat Actors, 6-Step Modeling, Microsoft STRIDE, Attack Surfaces</strong></div>
+      </div>
+    </section>
+
+    <!-- Figure Card 1: Online Image -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/YuwBHs9kmdPgYwdV06rfv4O4qvdM1h9gjeCT0n7pLh0AaEIEGix8KaP9jEOc670RV9etWcojFg4_Rah4qSfNP9XYnwoNwKycITEwidTHjoB_qeGMGwMpm-xhsm7Rs6eJuMZRKeBVoflnmWo6EFeQ0AHAftRVgxgk4dtelUqVxz0?purpose=inline" 
+             alt="External Penetration Testing 101" 
+             data-topic="Penetration Testing & Threats">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 2.1:</strong> Penetration Testing and External Adversary Vector Mapping</span>
+        <a href="https://n1chr0x.medium.com/external-penetration-testing-101-a-beginners-introduction-6557431d606d" target="_blank" rel="noopener">Source: Jinendar Kothari (Medium)</a>
+      </div>
+    </div>
+
+    <!-- Section 2.1 -->
+    <section class="section" id="section-2-1">
+      <div class="section-header">
+        <h2 class="section-title">2.1 What is a Security Threat?</h2>
+        <p class="section-lead">Any potential circumstance or event with the capacity to compromise operational integrity.</p>
+      </div>
+
+      <p>
+        A <strong>security threat</strong> is any potential event, action, or circumstance that could harm an information system, compromise data, or disrupt services. Threats may originate from malicious human adversaries, software bugs, hardware failures, environmental hazards, or unintentional employee mistakes.
+      </p>
+
+      <h3>Common Types of Security Threats</h3>
+      <div class="grid-3">
+        <!-- Threat 1: Malware -->
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🦠</div>
+          <h4 style="margin: 0 0 0.5rem 0;">1. Malware</h4>
+          <p class="card-desc">
+            Malicious software designed specifically to damage, disrupt, monitor, or gain unauthorized access to computer systems.
+          </p>
+          <ul style="font-size: 0.85rem; margin-bottom: 0;">
+            <li><strong>Viruses:</strong> Self-replicating code attached to valid files.</li>
+            <li><strong>Worms:</strong> Autonomous self-propagating network infections.</li>
+            <li><strong>Trojans:</strong> Disguised as legitimate utility software.</li>
+            <li><strong>Spyware:</strong> Silently monitors keystrokes and credentials.</li>
+            <li><strong>Ransomware:</strong> Encrypts storage and demands payoff.</li>
+          </ul>
+        </div>
+
+        <!-- Threat 2: Phishing -->
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🎣</div>
+          <h4 style="margin: 0 0 0.5rem 0;">2. Phishing</h4>
+          <p class="card-desc">
+            A social engineering vector where attackers pose as trusted institutions to deceive victims into handing over passwords or tokens.
+          </p>
+          <div class="callout callout-amber" style="margin: 0; padding: 0.75rem;">
+            <p style="font-size: 0.82rem; margin-bottom: 0;">
+              <strong>Example:</strong> A student receives a counterfeit email spoofing the Registrar, asking them to verify their account on a lookalike login page.
+            </p>
+          </div>
+        </div>
+
+        <!-- Threat 3: DoS / DDoS -->
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">💥</div>
+          <h4 style="margin: 0 0 0.5rem 0;">3. Denial-of-Service (DoS)</h4>
+          <p class="card-desc">
+            An attack intended to deplete server compute, bandwidth, or memory resources, causing services to become completely unavailable to legitimate traffic.
+          </p>
+          <span class="badge-tag badge-rose">Availability Killer</span>
+        </div>
+
+        <!-- Threat 4: Insider Threat -->
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🕵️</div>
+          <h4 style="margin: 0 0 0.5rem 0;">4. Insider Threats</h4>
+          <p class="card-desc">
+            Threats generated from inside the perimeter—such as disgruntled employees, instructors, contractors, or rogue administrators abuse valid credentials.
+          </p>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0;">
+            <strong>Example:</strong> A clerk dumps confidential transcripts onto a USB drive and leaks them online.
+          </p>
+        </div>
+
+        <!-- Threat 5: Social Engineering -->
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🎭</div>
+          <h4 style="margin: 0 0 0.5rem 0;">5. Social Engineering</h4>
+          <p class="card-desc">
+            Manipulating human psychological heuristics (urgency, authority, fear, vanity) to induce users into bypassing security controls.
+          </p>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0;">
+            <strong>Example:</strong> Attacker calls the campus IT helpdesk claiming to be the Dean demanding an emergency reset.
+          </p>
+        </div>
+
+        <!-- Threat 6: Physical Threats -->
+        <div class="card">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🔥</div>
+          <h4 style="margin: 0 0 0.5rem 0;">6. Physical Threats</h4>
+          <p class="card-desc">
+            Direct tangible hazards damaging computing facilities and transmission media.
+          </p>
+          <ul style="font-size: 0.85rem; margin-bottom: 0;">
+            <li>Laptop and drive theft</li>
+            <li>Electrical fire and HVAC collapse</li>
+            <li>Flash flooding in server basements</li>
+            <li>Server room tailgating</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2.2 & 2.3 -->
+    <section class="section" id="section-2-2">
+      <div class="section-header">
+        <h2 class="section-title">2.2 What is Threat Modeling?</h2>
+        <p class="section-lead">A structured engineering process of discovering, analyzing, and fixing threats before release.</p>
+      </div>
+
+      <div class="callout callout-emerald">
+        <div class="callout-icon">🧠</div>
+        <div class="callout-content">
+          <div class="callout-title">The Core Philosophy of Threat Modeling</div>
+          <p style="margin-bottom: 0; font-size: 0.95rem;">
+            <strong>Threat modeling means thinking like an attacker so that we can better protect an information system.</strong> It shifts cybersecurity from reactive fire-fighting to proactive architectural hardening.
+          </p>
+        </div>
+      </div>
+
+      <p>Before deploying an online Student Enrollment System, software architects must rigorously ask:</p>
+      <div class="grid-2">
+        <div class="card" style="background: rgba(30, 41, 59, 0.5);">
+          <ul style="font-size: 0.92rem; line-height: 1.8; margin-bottom: 0;">
+            <li>❓ What sensitive assets and records does the system store?</li>
+            <li>❓ Who has authorization to query or update this information?</li>
+            <li>❓ Where are the entry points an adversary could enter through?</li>
+          </ul>
+        </div>
+        <div class="card" style="background: rgba(30, 41, 59, 0.5);">
+          <ul style="font-size: 0.92rem; line-height: 1.8; margin-bottom: 0;">
+            <li>❓ What catastrophic damage occurs if the database is exposed?</li>
+            <li>❓ What defense-in-depth controls must be implemented now?</li>
+            <li>❓ How will we detect and contain an active breach in progress?</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 2rem;">2.3 Why is Threat Modeling Crucial?</h3>
+      <div class="grid-3">
+        <div class="card"><p style="font-size: 0.88rem; margin: 0;">🚀 <strong>Preemptive Detection:</strong> Identifies attack paths prior to production release.</p></div>
+        <div class="card"><p style="font-size: 0.88rem; margin: 0;">🏛️ <strong>Architectural Clarity:</strong> Exposes fundamental flaws in system data flows.</p></div>
+        <div class="card"><p style="font-size: 0.88rem; margin: 0;">🎯 <strong>Prioritized Spending:</strong> Directs limited IT budget to highest-impact vulnerabilities.</p></div>
+        <div class="card"><p style="font-size: 0.88rem; margin: 0;">🛡️ <strong>Reduced Breaches:</strong> Greatly limits likelihood of damaging data exposures.</p></div>
+        <div class="card"><p style="font-size: 0.88rem; margin: 0;">💼 <strong>Cost Efficiency:</strong> Fixing a security bug in design costs 10x less than post-breach.</p></div>
+        <div class="card"><p style="font-size: 0.88rem; margin: 0;">📜 <strong>Compliance Alignment:</strong> Fulfills regulatory standards like ISO 27001 and NIST.</p></div>
+      </div>
+    </section>
+
+    <!-- Figure Card 2: Threat Modeling Steps -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/JqkUK9Q-0kcLBA5ABTSxh5bftd3XiMRjSYM1zA_RBtt8GFBmSaDxCssQIigwDlQLar7_zLCYr_uTSU1jqlNwBnIGS3ub69uu9PBnKN_fJ37jW30CI4y6JBIM7lUE9MpHoIoNYRdq0wqrQFH2WPqO7e7uDzCUQTfCi-k2fKSuDEA?purpose=inline" 
+             alt="A Step-by-Step Guide to Cybersecurity Threat Modeling" 
+             data-topic="Threat Modeling Lifecycle">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 2.2:</strong> Formal Engineering Threat Modeling Pipeline</span>
+        <a href="https://www.promenadesoftware.com/white-papers/a-step-by-step-guide-to-cybersecurity-threat-modeling" target="_blank" rel="noopener">Source: Promenade Software</a>
+      </div>
+    </div>
+
+    <!-- Section 2.4 -->
+    <section class="section" id="section-2-4">
+      <div class="section-header">
+        <h2 class="section-title">2.4 The 6-Step Threat Modeling Process</h2>
+        <p class="section-lead">A systematic methodology applicable to any enterprise software or network environment.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-left: 4px solid var(--color-cyan);">
+          <span class="badge-tag">Step 1</span>
+          <h4 style="margin: 0 0 0.5rem 0;">Identify Assets</h4>
+          <p class="card-desc">
+            Determine what critical resources need shielding: user credentials, student transcripts, database nodes, source code repos, and payment gateways.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-blue);">
+          <span class="badge-tag">Step 2</span>
+          <h4 style="margin: 0 0 0.5rem 0;">Identify Potential Threats</h4>
+          <p class="card-desc">
+            Brainstorm what adversaries or events could harm the target: unauthorized logins, malware delivery, DoS flood attacks, or insider leakage.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-amber);">
+          <span class="badge-tag badge-amber">Step 3</span>
+          <h4 style="margin: 0 0 0.5rem 0;">Identify Vulnerabilities</h4>
+          <p class="card-desc">
+            Inspect flaws in software code, network configurations, or access rules: weak admin passwords, missing patches, cleartext HTTP, or open ports.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-rose);">
+          <span class="badge-tag badge-rose">Step 4</span>
+          <h4 style="margin: 0 0 0.5rem 0;">Analyze Potential Impact</h4>
+          <p class="card-desc">
+            Forecast consequences if weaknesses are exploited: monetary loss, grade falsification, enrollment collapse, and reputational disaster.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-emerald);">
+          <span class="badge-tag badge-emerald">Step 5</span>
+          <h4 style="margin: 0 0 0.5rem 0;">Select Security Controls</h4>
+          <p class="card-desc">
+            Implement appropriate safeguards: MFA, AES encryption, Web Application Firewalls (WAF), least privilege permissions, and automated backups.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-purple);">
+          <span class="badge-tag badge-purple">Step 6</span>
+          <h4 style="margin: 0 0 0.5rem 0;">Review and Update Continuously</h4>
+          <p class="card-desc">
+            Threats evolve dynamically. Periodically repeat the analysis to audit software upgrades, new API integrations, and emerging CVE vectors.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Figure Card 3: STRIDE -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/yB4uC8-XCHUsntHvAQko0RMSPsoIDrCyLsTteUjOw-5UsCfg0raOodrm70OOShkjygFa0EUUbm0dH5iZ7leseW3sl25TrYE6b9Hk8b3fqaymkN3JvmnHrnA851vUJFcLdu-7bqiipcIy6DFRLj-SsTNfqvXVL5Dq8Ct7aje5A2o?purpose=inline" 
+             alt="Threat Modeling Guide STRIDE" 
+             data-topic="STRIDE Framework">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 2.3:</strong> Microsoft STRIDE Threat Taxonomy and Modeling Lifecycle</span>
+        <a href="https://www.securecodinghub.com/es/blog/threat-modeling-for-developers-stride-pasta-threat-dragon" target="_blank" rel="noopener">Source: Secure Coding Hub</a>
+      </div>
+    </div>
+
+    <!-- Section 2.5: STRIDE -->
+    <section class="section" id="section-2-5">
+      <div class="section-header">
+        <h2 class="section-title">2.5 The STRIDE Threat Modeling Framework</h2>
+        <p class="section-lead">Developed by Microsoft, STRIDE categorizes all software threats into six distinct attack profiles.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Letter</th>
+              <th>Threat Category</th>
+              <th>Adversary Meaning</th>
+              <th>University SIS Example</th>
+              <th>Viable Security Control</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--color-cyan); font-size:1.1rem;">S</strong></td>
+              <td><strong>Spoofing</strong></td>
+              <td>Pretending to be someone else</td>
+              <td>Attacker logs in using stolen teacher password</td>
+              <td>MFA, Digital Certificates</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-emerald); font-size:1.1rem;">T</strong></td>
+              <td><strong>Tampering</strong></td>
+              <td>Unauthorized modification of data</td>
+              <td>Hacker alters student graduation grade records</td>
+              <td>Digital signatures, Cryptographic hashes</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-amber); font-size:1.1rem;">R</strong></td>
+              <td><strong>Repudiation</strong></td>
+              <td>Denying an action without audit evidence</td>
+              <td>Employee deletes records then claims innocence</td>
+              <td>Write-once centralized audit logging</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-blue); font-size:1.1rem;">I</strong></td>
+              <td><strong>Information Disclosure</strong></td>
+              <td>Exposing confidential data to unauthorized eyes</td>
+              <td>Confidential scholarship files leaked publicly</td>
+              <td>Data encryption (TLS 1.3, AES)</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-rose); font-size:1.1rem;">D</strong></td>
+              <td><strong>Denial of Service</strong></td>
+              <td>Making a critical system unavailable</td>
+              <td>Adversary floods enrollment server with traffic</td>
+              <td>Rate limiting, DDoS scrubbing (Cloudflare)</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-purple); font-size:1.1rem;">E</strong></td>
+              <td><strong>Elevation of Privilege</strong></td>
+              <td>Gaining higher access rights without authorization</td>
+              <td>Student exploits bug to acquire Admin rights</td>
+              <td>Principle of Least Privilege, RBAC checks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-amber" style="margin-top: 1.5rem;">
+        <div class="callout-icon">💬</div>
+        <div class="callout-content">
+          <div class="callout-title">Class Discussion: Which STRIDE category is the most dangerous?</div>
+          <p style="margin-bottom: 0; font-size: 0.92rem;">
+            There is <strong>no single correct answer</strong>! In a payment portal, <em>Tampering</em> or <em>Information Disclosure</em> might trigger direct financial and legal ruin. In a public enrollment rush, <em>Denial of Service</em> paralyzes business. For administrative control, <em>Elevation of Privilege</em> gives attackers keys to the kingdom. Students must evaluate based on asset value and operational impact.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2.6: Attack Surfaces -->
+    <section class="section" id="section-2-6">
+      <div class="section-header">
+        <h2 class="section-title">2.6 Introduction to Attack Surfaces</h2>
+        <p class="section-lead">The sum total of all vulnerable exposure points an adversary can attempt to probe.</p>
+      </div>
+
+      <p>
+        An <strong>attack surface</strong> refers to all the reachable points through which an unauthorized user or threat actor can enter data into or extract data from an environment.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4 style="color: var(--color-rose); margin-top: 0;">Common Attack Surface Vectors</h4>
+          <ul style="font-size: 0.92rem;">
+            <li>🌐 <strong>Public Web Forms &amp; Login Portals:</strong> Vulnerable to brute force, credential stuffing, and SQL injection.</li>
+            <li>🔌 <strong>APIs &amp; Microservices:</strong> Broken object level authorization (BOLA) and unauthenticated endpoints.</li>
+            <li>💾 <strong>Database Ports:</strong> MySQL/PostgreSQL ports exposed directly to public internet without VPN.</li>
+            <li>🖥️ <strong>Open Network Ports:</strong> Unnecessary SSH (port 22) or SMB (port 445) exposed.</li>
+            <li>👥 <strong>Employee Accounts:</strong> Over-privileged worker logins susceptible to social engineering.</li>
+            <li>📦 <strong>Third-Party Libraries:</strong> Vulnerable NPM, Maven, or Python packages.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4 style="color: var(--color-emerald); margin-top: 0;">Attack Surface Reduction Strategies</h4>
+          <ul style="font-size: 0.92rem;">
+            <li>✂️ <strong>Disable Unnecessary Services:</strong> Turn off unused ports, daemons, and legacy APIs.</li>
+            <li>🛡️ <strong>Network Segmentation:</strong> Isolate databases behind private subnets and reverse proxies.</li>
+            <li>🔒 <strong>Zero Trust Architecture:</strong> Enforce explicit authentication and least privilege on every request.</li>
+            <li>🧹 <strong>Credential Hygiene:</strong> Purge dormant student accounts and require immediate credential rotation.</li>
+            <li>🔍 <strong>Regular Port Auditing:</strong> Execute Nmap vulnerability scans to catch inadvertent public listeners.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discussion Accordion -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">2.7 Lesson 2 Review &amp; Discussion</h2>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>1. Why is threat modeling described as "thinking like an attacker"?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          Because rather than merely checking software features, threat modeling analyzes systems through the motives, entry paths, tools, and goals of an adversary, revealing blind spots that developers typically overlook.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>2. How does the STRIDE model help software developers build more resilient systems?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          STRIDE provides a standardized mental checklist. Developers can evaluate each data flow, process, and data store against the 6 specific threat types, ensuring no category (like Non-Repudiation or Elevation) is ignored during design.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>3. What is an attack surface, and why is minimizing it a primary security objective?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          An attack surface is the total sum of entry points reachable by an attacker. Minimizing it reduces the number of opportunities and vulnerabilities an attacker can exploit, dramatically lowering the probability of intrusion.
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Lesson Navigation -->
+    <div class="lesson-nav-bar">
+      <a href="../Lesson 1/index.html" class="lesson-nav-btn">
+        <span class="sub">Previous Lesson</span>
+        <span class="title">⬅️ Lesson 1: CIA Triad</span>
+      </a>
+
+      <a href="../Activities/index.html" class="btn btn-secondary">
+        <span>🎯 Practice STRIDE in Activities</span>
+      </a>
+
+      <a href="../Lesson 3/index.html" class="lesson-nav-btn" style="text-align: right;">
+        <span class="sub">Next Lesson</span>
+        <span class="title">Lesson 3: Vulnerabilities ➡️</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">Lesson 2: Threat Modeling and Cybersecurity Threats</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Course Portal</a></li>
+        <li><a href="../Lesson 1/index.html">Lesson 1</a></li>
+        <li><a href="index.html">Lesson 2</a></li>
+        <li><a href="../Lesson 3/index.html">Lesson 3</a></li>
+        <li><a href="../Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="../Activities/index.html">Activities</a></li>
+        <li><a href="../Assessments/index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js"></script>
+</body>
+</html>

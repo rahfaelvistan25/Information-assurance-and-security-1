@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Information Assurance & Security 1 | Module 1 Portal</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Global Header Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="index.html" selected>🏠 Course Overview</option>
+        <option value="Lesson 1/index.html">Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="Lesson 2/index.html">Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="Lesson 3/index.html">Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="Activities/index.html">🎯 Case Study &amp; Activities</option>
+        <option value="Projects/index.html">💼 School Capstone Project</option>
+        <option value="Assessments/index.html">📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link active">Home</a></li>
+      <li><a href="Lesson 1/index.html" class="nav-link">Lesson 1</a></li>
+      <li><a href="Lesson 2/index.html" class="nav-link">Lesson 2</a></li>
+      <li><a href="Lesson 3/index.html" class="nav-link">Lesson 3</a></li>
+      <li><a href="Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="Activities/index.html" class="nav-link">Activities</a></li>
+      <li><a href="Projects/index.html" class="nav-link">Project</a></li>
+      <li><a href="Assessments/index.html" class="nav-link">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag">MWF 10:30 AM – 11:30 AM • Complete Curriculum</span>
+      <h1 class="hero-title">Module 1: Fundamentals of Information Assurance</h1>
+      <p class="hero-subtitle">
+        Master the foundational doctrines of cybersecurity and information assurance: the CIA Triad, threat modeling with Microsoft STRIDE, vulnerability management, CVSS scoring, and enterprise risk assessment frameworks (NIST CSF 2.0, NIST RMF, ISO/IEC 27001, and OCTAVE).
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span>📚 Subject:</span>
+          <strong>Information Assurance / Security 1</strong>
+        </div>
+        <div class="meta-item">
+          <span>⏱️ Duration:</span>
+          <strong>4 Lessons (60–90 min each)</strong>
+        </div>
+        <div class="meta-item">
+          <span>🎓 Target:</span>
+          <strong>College / IT &amp; CS Students</strong>
+        </div>
+        <div class="meta-item">
+          <span>🚀 Progress:</span>
+          <strong id="user-progress-count" class="badge-tag badge-emerald" style="margin-bottom:0;">0/7 Completed</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTIVE LESSON INTERACTIVE COMPONENT -->
+    <section class="selector-box" id="selective-lesson">
+      <div class="selector-header">
+        <h2><span>⚡</span> Selective Lesson Navigator</h2>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Choose any lesson or evaluation module below to view preview and launch directly:</span>
+      </div>
+
+      <div class="selector-tabs">
+        <button class="tab-btn active" onclick="switchLessonPreview('l1')">
+          <span>Lesson 1</span>
+          <span class="tab-sub">CIA Triad</span>
+        </button>
+        <button class="tab-btn" onclick="switchLessonPreview('l2')">
+          <span>Lesson 2</span>
+          <span class="tab-sub">Threats &amp; STRIDE</span>
+        </button>
+        <button class="tab-btn" onclick="switchLessonPreview('l3')">
+          <span>Lesson 3</span>
+          <span class="tab-sub">Vulnerabilities &amp; Controls</span>
+        </button>
+        <button class="tab-btn" onclick="switchLessonPreview('l4')">
+          <span>Lesson 4</span>
+          <span class="tab-sub">Risk &amp; Frameworks</span>
+        </button>
+        <button class="tab-btn" onclick="switchLessonPreview('act')">
+          <span>Activities</span>
+          <span class="tab-sub">SIS Case Study 1-4</span>
+        </button>
+        <button class="tab-btn" onclick="switchLessonPreview('proj')">
+          <span>Project</span>
+          <span class="tab-sub">Practical Risk Report</span>
+        </button>
+        <button class="tab-btn" onclick="switchLessonPreview('exam')">
+          <span>Exam</span>
+          <span class="tab-sub">50-Pt Test &amp; Key</span>
+        </button>
+      </div>
+
+      <div id="lesson-preview-display" class="lesson-preview-card">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Course Overview & Learning Objectives -->
+    <div class="grid-2">
+      <div class="card">
+        <span class="badge-tag">Domain Overview</span>
+        <h3 class="card-title">📖 General Description</h3>
+        <p class="card-desc">
+          <strong>Information Assurance (IA)</strong> is the systematic practice of protecting information and information systems against unauthorized access, modification, destruction, and disruption.
+        </p>
+        <p class="card-desc">
+          In today's interconnected digital ecosystems, organizations rely heavily on databases, networks, cloud microservices, and web portals to conduct critical transactions. These systems require rigorous defense-in-depth across people, technology, and organizational policy.
+        </p>
+        <div class="callout callout-emerald" style="margin: 0.5rem 0 0 0;">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <div class="callout-title">Beyond Simple Passwords</div>
+            <div style="font-size:0.85rem; color:#cbd5e1;">IA is not merely installing an antivirus or setting a PIN. It governs physical security, operational governance, continuous monitoring, and disaster recovery.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge-tag badge-purple">Competency Checklist</span>
+        <h3 class="card-title">🎯 Learning Objectives</h3>
+        <ul style="font-size: 0.88rem; margin-left: 1.25rem;">
+          <li>Define Information Assurance and explain its strategic role in modern enterprises.</li>
+          <li>Differentiate <strong>Confidentiality, Integrity, and Availability</strong> with real-world SIS scenarios.</li>
+          <li>Identify common cybersecurity threats (malware, phishing, insider threats, DDoS).</li>
+          <li>Conduct <strong>Threat Modeling</strong> using the <strong>STRIDE</strong> framework.</li>
+          <li>Distinguish between <strong>Threat, Vulnerability, and Risk</strong>.</li>
+          <li>Calculate risk scores (\( \text{Risk} = \text{Likelihood} \times \text{Impact} \)) and populate risk matrices.</li>
+          <li>Navigate voluntary cybersecurity standards: <strong>NIST CSF 2.0, NIST RMF, ISO/IEC 27001, and OCTAVE</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Lesson Cards Grid -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">📂 Complete Module Lessons</h2>
+        <p class="section-lead">Explore each structured lesson folder with complete diagrams, real-world case studies, and interactive knowledge checks.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Lesson 1 Card -->
+        <div class="card">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" 
+                 alt="Cybersecurity Shield & Network" 
+                 data-topic="CIA Triad">
+          </div>
+          <span class="badge-tag">Folder: Lesson 1</span>
+          <h3 class="card-title">Lesson 1: Introduction to IA &amp; The CIA Triad</h3>
+          <p class="card-desc">
+            Explore the definition of IA, the Student Information System (SIS) case model, and the three pillars: Confidentiality, Integrity, and Availability. Includes interactive triad scenario explorer and security controls breakdown.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.82rem; color: var(--text-dim);">⏱️ 90 Minutes • 5 Topics</span>
+            <a href="Lesson 1/index.html" class="btn btn-primary btn-sm">Enter Lesson 1 ➔</a>
+          </div>
+        </div>
+
+        <!-- Lesson 2 Card -->
+        <div class="card">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" 
+                 alt="Threat Modeling and Network Security" 
+                 data-topic="Threat Modeling">
+          </div>
+          <span class="badge-tag badge-amber">Folder: Lesson 2</span>
+          <h3 class="card-title">Lesson 2: Threat Modeling &amp; Cybersecurity Threats</h3>
+          <p class="card-desc">
+            Understand malware types, phishing vectors, insider threats, and DoS attacks. Learn how to think like an attacker using the 6-step threat modeling process, Microsoft's STRIDE framework, and attack surface minimization.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.82rem; color: var(--text-dim);">⏱️ 90 Minutes • 6 Steps</span>
+            <a href="Lesson 2/index.html" class="btn btn-primary btn-sm">Enter Lesson 2 ➔</a>
+          </div>
+        </div>
+
+        <!-- Lesson 3 Card -->
+        <div class="card">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" 
+                 alt="Vulnerabilities & Code Security" 
+                 data-topic="Vulnerabilities">
+          </div>
+          <span class="badge-tag badge-rose">Folder: Lesson 3</span>
+          <h3 class="card-title">Lesson 3: Vulnerabilities &amp; Security Weaknesses</h3>
+          <p class="card-desc">
+            Deep dive into software, network, human, physical, and configuration vulnerabilities. Master administrative, technical, and physical security controls, the Principle of Least Privilege (PoLP), and CVSS vulnerability scoring.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.82rem; color: var(--text-dim);">⏱️ 90 Minutes • CVSS 0–10</span>
+            <a href="Lesson 3/index.html" class="btn btn-primary btn-sm">Enter Lesson 3 ➔</a>
+          </div>
+        </div>
+
+        <!-- Lesson 4 Card -->
+        <div class="card">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" 
+                 alt="Global Security Frameworks" 
+                 data-topic="Risk Management">
+          </div>
+          <span class="badge-tag badge-purple">Folder: Lesson 4</span>
+          <h3 class="card-title">Lesson 4: Risk Assessment &amp; Security Frameworks</h3>
+          <p class="card-desc">
+            Master quantitative &amp; qualitative risk assessment, the 3x3 Risk Matrix, and 4 treatment strategies: Avoidance, Mitigation, Transfer, and Acceptance. Compare NIST RMF, NIST CSF 2.0, ISO/IEC 27001, and OCTAVE.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.82rem; color: var(--text-dim);">⏱️ 90 Minutes • 4 Standards</span>
+            <a href="Lesson 4/index.html" class="btn btn-primary btn-sm">Enter Lesson 4 ➔</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separate Folders for Activities, Project, and Quiz -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">🧪 Activities, Projects &amp; Assessments</h2>
+        <p class="section-lead">Dedicated separate spaces for practical laboratory case studies, school portfolio projects, and comprehensive evaluations.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Activities Folder Card -->
+        <div class="card" style="border-color: rgba(6, 182, 212, 0.4);">
+          <div class="card-media" style="height: 140px;">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" 
+                 alt="Hands-on Lab Activities" 
+                 data-topic="Case Study">
+          </div>
+          <span class="badge-tag">Folder: Activities</span>
+          <h3 class="card-title">🎯 Case Study &amp; Activities</h3>
+          <p class="card-desc">
+            Interactive University Student Enrollment System case study covering 4 hands-on activities: CIA Triad tagging, STRIDE mapping, Risk Matrix calculations, and Security Control recommendations.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--color-cyan);">4 Interactive Labs</span>
+            <a href="Activities/index.html" class="btn btn-accent btn-sm">Start Activities ➔</a>
+          </div>
+        </div>
+
+        <!-- Projects Folder Card -->
+        <div class="card" style="border-color: rgba(168, 85, 247, 0.4);">
+          <div class="card-media" style="height: 140px;">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" 
+                 alt="School Project Report" 
+                 data-topic="School Project">
+          </div>
+          <span class="badge-tag badge-purple">Folder: Projects</span>
+          <h3 class="card-title">💼 School Capstone Project</h3>
+          <p class="card-desc">
+            Part E Practical Application: "Conducting a Basic Information Security Risk Assessment" (20 Points). Includes 5 enterprise system prompts, guided report template, and downloadable report generator.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--color-purple);">20-Point Capstone</span>
+            <a href="Projects/index.html" class="btn btn-secondary btn-sm">View Project ➔</a>
+          </div>
+        </div>
+
+        <!-- Assessments Folder Card -->
+        <div class="card" style="border-color: rgba(244, 63, 94, 0.4);">
+          <div class="card-media" style="height: 140px;">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80" 
+                 alt="Exams & Grading" 
+                 data-topic="Assessment">
+          </div>
+          <span class="badge-tag badge-rose">Folder: Assessments</span>
+          <h3 class="card-title">📝 50-Point Examination</h3>
+          <p class="card-desc">
+            Full comprehensive evaluation: Part A Multiple Choice (15 pts), Part B Identification (10 pts), Part C True/False (10 pts), Part D Situational Analysis (15 pts), and Instructor Answer Key toggle.
+          </p>
+          <div class="card-footer">
+            <span style="font-size: 0.8rem; color: var(--color-rose);">Instant Auto-Grading</span>
+            <a href="Assessments/index.html" class="btn btn-primary btn-sm">Take Examination ➔</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaching Plan Overview -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">🗓️ Suggested Teaching Plan &amp; Methodology</h2>
+        <p class="section-lead">A recommended 4-session breakdown (90 minutes each) for college instructors and self-paced learners.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Session</th>
+              <th>Core Topic</th>
+              <th>Suggested Time</th>
+              <th>Recommended Classroom Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lesson 1</strong></td>
+              <td>Introduction to IA &amp; the CIA Triad</td>
+              <td>90 Minutes</td>
+              <td>CIA Triad identification using real-world SIS scenarios</td>
+            </tr>
+            <tr>
+              <td><strong>Lesson 2</strong></td>
+              <td>Threat Modeling &amp; STRIDE</td>
+              <td>90 Minutes</td>
+              <td>STRIDE threat identification &amp; attack surface mapping</td>
+            </tr>
+            <tr>
+              <td><strong>Lesson 3</strong></td>
+              <td>Vulnerabilities &amp; Security Controls</td>
+              <td>90 Minutes</td>
+              <td>Identify weaknesses in a sample website &amp; CVSS score review</td>
+            </tr>
+            <tr>
+              <td><strong>Lesson 4</strong></td>
+              <td>Risk Assessment Frameworks &amp; Application</td>
+              <td>90 Minutes</td>
+              <td>Group-based Information Security Risk Assessment exercise</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">Designed for College of Computer Studies / Information Technology</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Course Portal</a></li>
+        <li><a href="Lesson 1/index.html">Lesson 1</a></li>
+        <li><a href="Lesson 2/index.html">Lesson 2</a></li>
+        <li><a href="Lesson 3/index.html">Lesson 3</a></li>
+        <li><a href="Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="Activities/index.html">Activities</a></li>
+        <li><a href="Projects/index.html">Projects</a></li>
+        <li><a href="Assessments/index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="assets/js/common.js"></script>
+  <script>
+    const lessonData = {
+      l1: {
+        badge: "Lesson 1",
+        title: "Introduction to Information Assurance and the CIA Triad",
+        desc: "Defines Information Assurance across people, process, and technology. Unpacks Confidentiality, Integrity, and Availability with authentic Student Information System (SIS) breach examples and primary defense controls.",
+        duration: "90 Minutes",
+        topics: ["What is IA?", "Importance of IA", "Confidentiality Controls", "Integrity Hashing & Signatures", "Availability & Redundancy"],
+        link: "Lesson 1/index.html",
+        color: "cyan"
+      },
+      l2: {
+        badge: "Lesson 2",
+        title: "Threat Modeling and Cybersecurity Threats",
+        desc: "Covers cyber threat actors, malware variants, phishing mechanics, DoS attacks, and insider threats. Features the 6-step threat modeling lifecycle, Microsoft STRIDE categorization, and attack surface reduction.",
+        duration: "90 Minutes",
+        topics: ["Security Threat Typology", "Thinking Like an Attacker", "6-Step Process", "STRIDE Deep-Dive", "Attack Surfaces"],
+        link: "Lesson 2/index.html",
+        color: "amber"
+      },
+      l3: {
+        badge: "Lesson 3",
+        title: "Vulnerabilities and Security Weaknesses",
+        desc: "Clarifies the difference between threats, vulnerabilities, and risk using the house burglar analogy. Details software, network, human, physical, and configuration weaknesses, security controls, and CVSS severity scoring.",
+        duration: "90 Minutes",
+        topics: ["Vulnerability Types", "Threat vs. Vulnerability vs. Risk", "Admin, Tech & Physical Controls", "Principle of Least Privilege", "CVSS Metric (0.0-10.0)"],
+        link: "Lesson 3/index.html",
+        color: "rose"
+      },
+      l4: {
+        badge: "Lesson 4",
+        title: "Risk Assessment and Security Frameworks",
+        desc: "Explores quantitative risk calculation (Likelihood × Impact), 3×3 risk matrices, and 4 treatment responses. Analyzes voluntary standards: NIST RMF, NIST CSF 2.0, ISO/IEC 27001, and OCTAVE.",
+        duration: "90 Minutes",
+        topics: ["Information Security Risk", "8-Step Risk Process", "Risk Matrix & Scoring", "4 Treatment Strategies", "NIST CSF, RMF & ISO 27001"],
+        link: "Lesson 4/index.html",
+        color: "purple"
+      },
+      act: {
+        badge: "Practical Activities",
+        title: "University SIS Case Study & Hands-On Activities",
+        desc: "Analyze the real-world University Student Enrollment System with 4 interactive exercises: CIA principle identification, STRIDE incident categorization, Risk scoring & prioritization, and Security control design.",
+        duration: "60 Minutes",
+        topics: ["Activity 1: CIA Triad", "Activity 2: Threat Modeling", "Activity 3: Risk Calculation", "Activity 4: Control Recommendations"],
+        link: "Activities/index.html",
+        color: "cyan"
+      },
+      proj: {
+        badge: "School Project",
+        title: "Conducting a Basic Information Security Risk Assessment",
+        desc: "Cap-stone school project (20 Points). Choose between Online Banking, Hospital Systems, E-Commerce, or SIS to compile an institutional risk evaluation report with guided online builder.",
+        duration: "Independent Project",
+        topics: ["Asset Identification", "Threat & Vulnerability Enumeration", "CIA Impact Analysis", "Scoring & Treatment", "Professional Report Generator"],
+        link: "Projects/index.html",
+        color: "purple"
+      },
+      exam: {
+        badge: "Comprehensive Exam",
+        title: "50-Point Examination & Instructor Key",
+        desc: "Complete evaluation suite featuring 15 Multiple Choice Questions, 10 Identification items, 10 True/False statements, and 3 Situational Analysis case problems with an instructor-toggleable answer key.",
+        duration: "60-90 Minutes",
+        topics: ["Part A: MCQs (15 pts)", "Part B: Identification (10 pts)", "Part C: True/False (10 pts)", "Part D: Situations (15 pts)", "Reveal Answer Key"],
+        link: "Assessments/index.html",
+        color: "rose"
+      }
+    };
+
+    function switchLessonPreview(key) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const data = lessonData[key];
+      const preview = document.getElementById('lesson-preview-display');
+      
+      preview.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <span class="badge-tag badge-${data.color}">${data.badge}</span>
+            <h3 style="margin-top:0.4rem; margin-bottom:0.6rem; color:#fff; font-size:1.35rem;">${data.title}</h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; max-width:850px; line-height:1.6;">${data.desc}</p>
+          </div>
+          <a href="${data.link}" class="btn btn-primary" style="margin-top:0.5rem;">Launch Lesson ➔</a>
+        </div>
+        <div style="border-top:1px solid var(--border-color); padding-top:1rem; margin-top:0.5rem; display:flex; gap:1.5rem; flex-wrap:wrap; font-size:0.85rem; color:var(--text-dim);">
+          <div><span>⏱️ Suggested Time:</span> <strong style="color:#fff;">${data.duration}</strong></div>
+          <div><span>📌 Key Topics:</span> <strong style="color:var(--color-cyan);">${data.topics.join(' • ')}</strong></div>
+        </div>
+      `;
+    }
+
+    // Initialize with Lesson 1 preview
+    document.addEventListener('DOMContentLoaded', () => {
+      const firstTab = document.querySelector('.tab-btn');
+      if (firstTab) switchLessonPreview('l1');
+    });
+  </script>
+</body>
+</html>

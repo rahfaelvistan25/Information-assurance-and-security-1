@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Vulnerabilities &amp; Security Weaknesses | INFOSEC 101</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <a href="../index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="../index.html">🏠 Course Overview</option>
+        <option value="../Lesson 1/index.html">Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="../Lesson 2/index.html">Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="index.html" selected>Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="../Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="../Activities/index.html">🎯 Case Study &amp; Activities</option>
+        <option value="../Projects/index.html">💼 School Capstone Project</option>
+        <option value="../Assessments/index.html">📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../Lesson 1/index.html" class="nav-link">Lesson 1</a></li>
+      <li><a href="../Lesson 2/index.html" class="nav-link">Lesson 2</a></li>
+      <li><a href="index.html" class="nav-link active">Lesson 3</a></li>
+      <li><a href="../Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="../Activities/index.html" class="nav-link">Activities</a></li>
+      <li><a href="../Assessments/index.html" class="nav-link">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span>Module 1</span>
+      <span>/</span>
+      <span class="current">Lesson 3: Vulnerabilities &amp; Controls</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag badge-rose">Session 3 of 4 • 90 Minutes</span>
+      <h1 class="hero-title">LESSON 3: Vulnerabilities and Security Weaknesses</h1>
+      <p class="hero-subtitle">
+        Investigate internal flaws across software, hardware, networks, humans, and system configurations. Learn the triad of Administrative, Technical, and Physical controls, Principle of Least Privilege (PoLP), and the CVSS scoring framework.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item"><span>📖 Lesson ID:</span> <strong>MOD1-LES03</strong></div>
+        <div class="meta-item"><span>⏱️ Duration:</span> <strong>90 Minutes</strong></div>
+        <div class="meta-item"><span>🎯 Key Focus:</span> <strong>Vulnerability Types, Burglar Analogy, PoLP, CVSS v3.1</strong></div>
+      </div>
+    </section>
+
+    <!-- Figure Card 1: Vulnerability Scanner Overview -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/y3M_lT5BxcWcn_Iqa15TN35xhNsTQxO2_3L1EV538bJCZ_Fs70LBOippaYhUDOrviWWyfugsXTlK8AOOmOS-x-kxdNndfcvpDKD4mnncwoWezJlmZh6FW0HJsavwvn-WWqZG2aV8E1TAS3pzAdDzAJ-rlWaj5EAQpe7ndxlG0Es?purpose=inline" 
+             alt="Vulnerability Scanner Overview" 
+             data-topic="Vulnerability Scanner">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 3.1:</strong> Automated Vulnerability Scanner Audit Pipeline</span>
+        <a href="https://www.farrosfr.com/p/vulnerability-scanner-overview-tryhackme-write-up" target="_blank" rel="noopener">Source: TryHackMe / Farrosfr</a>
+      </div>
+    </div>
+
+    <!-- Section 3.1: What is a Vulnerability? -->
+    <section class="section" id="section-3-1">
+      <div class="section-header">
+        <h2 class="section-title">3.1 What is a Vulnerability?</h2>
+        <p class="section-lead">The inherent flaw that transforms a dormant threat into a live compromise.</p>
+      </div>
+
+      <p>
+        A <strong>vulnerability</strong> is a weakness or flaw in a computer system, network architecture, application source code, configuration parameter, or organizational procedure that could be exploited by a threat actor.
+      </p>
+
+      <div class="callout callout-rose">
+        <div class="callout-icon">🔍</div>
+        <div class="callout-content">
+          <div class="callout-title">The Real-World Password Example</div>
+          <p style="margin-bottom: 0; font-size: 0.92rem;">
+            A university enrollment website allows students to configure simple 8-digit numeric passwords such as <code>12345678</code>. An attacker uses automated dictionary tools to crack the accounts. 
+            <br>• <strong>Vulnerability:</strong> The weak password policy allowing predictable passwords.
+            <br>• <strong>Threat Actor:</strong> The external cyber attacker executing dictionary tools.
+            <br>• <strong>Risk / Impact:</strong> Mass unauthorized access to confidential student records.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3.2: 5 Types of Vulnerabilities -->
+    <section class="section" id="section-3-2">
+      <div class="section-header">
+        <h2 class="section-title">3.2 The Five Major Types of Vulnerabilities</h2>
+        <p class="section-lead">Weaknesses exist across multiple technical and human organizational layers.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- Software -->
+        <div class="card">
+          <span class="badge-tag">Category A</span>
+          <h3 class="card-title">💻 Software Vulnerabilities</h3>
+          <p class="card-desc">
+            Flaws embedded inside operating systems, microservice application code, or third-party dependencies.
+          </p>
+          <ul style="font-size: 0.88rem;">
+            <li><strong>SQL Injection (SQLi):</strong> Unsanitized input allowing database takeover.</li>
+            <li><strong>Cross-Site Scripting (XSS):</strong> Malicious JavaScript executed in user browsers.</li>
+            <li><strong>Buffer Overflows:</strong> Memory corruption granting code execution.</li>
+            <li><strong>Unpatched Software:</strong> Running legacy server versions with publicly published CVEs.</li>
+          </ul>
+        </div>
+
+        <!-- Network -->
+        <div class="card">
+          <span class="badge-tag badge-amber">Category B</span>
+          <h3 class="card-title">🌐 Network Vulnerabilities</h3>
+          <p class="card-desc">
+            Defects in network topologies, routing protocols, and perimeter configurations.
+          </p>
+          <ul style="font-size: 0.88rem;">
+            <li><strong>Unsecured Wi-Fi:</strong> Campus public wireless with no WPA3 encryption.</li>
+            <li><strong>Open Unused Ports:</strong> Leaving port 21 (FTP) or 23 (Telnet) open.</li>
+            <li><strong>Lack of Segmentation:</strong> Flat networks where student Wi-Fi directly talks to finance DB.</li>
+            <li><strong>Cleartext Protocols:</strong> Transmitting passwords over HTTP instead of HTTPS.</li>
+          </ul>
+        </div>
+
+        <!-- Human -->
+        <div class="card">
+          <span class="badge-tag badge-rose">Category C</span>
+          <h3 class="card-title">🧑‍💼 Human Vulnerabilities</h3>
+          <p class="card-desc">
+            Weaknesses stemming from psychological manipulation, negligence, and lack of security training.
+          </p>
+          <ul style="font-size: 0.88rem;">
+            <li><strong>Password Sharing:</strong> Administrators sharing one "admin" password across teams.</li>
+            <li><strong>Phishing Susceptibility:</strong> Employees clicking malicious macro-enabled Excel sheets.</li>
+            <li><strong>Credential Reuse:</strong> Reusing the same password on social media and school servers.</li>
+            <li><strong>Accidental Leakage:</strong> Misaddressing sensitive emails with BCC instead of CC.</li>
+          </ul>
+        </div>
+
+        <!-- Physical -->
+        <div class="card">
+          <span class="badge-tag badge-purple">Category D</span>
+          <h3 class="card-title">🏢 Physical Vulnerabilities</h3>
+          <p class="card-desc">
+            Failures in tangible perimeter barriers, environmental controls, and facility surveillance.
+          </p>
+          <ul style="font-size: 0.88rem;">
+            <li><strong>Unlocked Server Rooms:</strong> Unrestricted physical access to blade racks.</li>
+            <li><strong>Unattended Laptops:</strong> Workstations left unlocked in public campus libraries.</li>
+            <li><strong>No Backup Generators:</strong> Outages causing immediate server crashes and disk corruption.</li>
+            <li><strong>Missing CCTV:</strong> Blind spots around server room entry doors.</li>
+          </ul>
+        </div>
+
+        <!-- Configuration -->
+        <div class="card" style="grid-column: 1 / -1;">
+          <span class="badge-tag badge-emerald">Category E</span>
+          <h3 class="card-title">⚙️ Configuration Vulnerabilities</h3>
+          <p class="card-desc">
+            Security exposures caused by incorrect administrative setup rather than flawed code.
+          </p>
+          <div class="grid-3" style="margin: 0.5rem 0 0 0;">
+            <div style="background:rgba(30,41,59,0.5); padding:0.85rem; border-radius:6px; font-size:0.85rem;">
+              <strong>Public Cloud Buckets:</strong> S3 buckets or Google Drive folders accidentally shared with "Anyone with link".
+            </div>
+            <div style="background:rgba(30,41,59,0.5); padding:0.85rem; border-radius:6px; font-size:0.85rem;">
+              <strong>Default Credentials:</strong> Leaving routers with username <code>admin</code> and password <code>admin</code>.
+            </div>
+            <div style="background:rgba(30,41,59,0.5); padding:0.85rem; border-radius:6px; font-size:0.85rem;">
+              <strong>Excessive Permissions:</strong> Granting root/DBA privileges to basic web application accounts.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3.3: Threat vs Vulnerability vs Risk -->
+    <section class="section" id="section-3-3">
+      <div class="section-header">
+        <h2 class="section-title">3.3 Threat vs. Vulnerability vs. Risk</h2>
+        <p class="section-lead">Mastering the fundamental terminology distinctions.</p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-icon">🏠</div>
+        <div class="callout-content">
+          <div class="callout-title">The Master House Analogy</div>
+          <div class="grid-3" style="margin-top: 0.5rem;">
+            <div style="background: rgba(15,23,42,0.8); padding: 1rem; border-radius: 8px;">
+              <strong style="color:var(--color-rose);">1. Threat: The Burglar</strong>
+              <p style="font-size:0.85rem; margin-top:0.3rem; margin-bottom:0;">An external entity with the capability and intent to cause harm.</p>
+            </div>
+            <div style="background: rgba(15,23,42,0.8); padding: 1rem; border-radius: 8px;">
+              <strong style="color:var(--color-amber);">2. Vulnerability: Unlocked Door</strong>
+              <p style="font-size:0.85rem; margin-top:0.3rem; margin-bottom:0;">An inherent weakness or opening that permits entry.</p>
+            </div>
+            <div style="background: rgba(15,23,42,0.8); padding: 1rem; border-radius: 8px;">
+              <strong style="color:var(--color-cyan);">3. Risk: Stolen Valuables</strong>
+              <p style="font-size:0.85rem; margin-top:0.3rem; margin-bottom:0;">The actual probability and impact of the burglar entering and stealing possessions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Formal Academic Definition</th>
+              <th>Analogy Entity</th>
+              <th>IT Information System Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--color-rose);">Threat</strong></td>
+              <td>Something that could cause intentional or accidental harm.</td>
+              <td>A burglar scouting a neighborhood</td>
+              <td>A black-hat hacker searching for targets</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-amber);">Vulnerability</strong></td>
+              <td>An internal weakness or flaw that can be exploited.</td>
+              <td>An unlocked front door or window latch</td>
+              <td>A weak administrator password (e.g. "admin123")</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--color-cyan);">Risk</strong></td>
+              <td>The possibility and severity of damage occurring.</td>
+              <td>Possibility of electronics being stolen</td>
+              <td>Possibility of student records exfiltration &amp; fines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3.4: Common Vulnerabilities & Controls Table -->
+    <section class="section" id="section-3-4">
+      <div class="section-header">
+        <h2 class="section-title">3.4 Common Cybersecurity Vulnerabilities Matrix</h2>
+        <p class="section-lead">Direct mapping from vulnerability to consequences and mitigation controls.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Identified Vulnerability</th>
+              <th>Potential Adversary Consequence</th>
+              <th>Recommended Security Control</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Weak passwords</strong></td>
+              <td>Account takeover via brute force</td>
+              <td>Enforce complex password policy &amp; MFA</td>
+            </tr>
+            <tr>
+              <td><strong>Outdated server software</strong></td>
+              <td>Remote code execution via known CVEs</td>
+              <td>Automated patch management pipeline</td>
+            </tr>
+            <tr>
+              <td><strong>SQL Injection (SQLi)</strong></td>
+              <td>Full database compromise and data exfiltration</td>
+              <td>Parameterized queries &amp; Prepared Statements</td>
+            </tr>
+            <tr>
+              <td><strong>Unsecured public Wi-Fi</strong></td>
+              <td>Man-in-the-Middle (MitM) session eavesdropping</td>
+              <td>Mandate WPA3 Enterprise &amp; internal VPNs</td>
+            </tr>
+            <tr>
+              <td><strong>Excessive user permissions</strong></td>
+              <td>Unintended privilege abuse &amp; data leakage</td>
+              <td>Enforce Principle of Least Privilege (PoLP)</td>
+            </tr>
+            <tr>
+              <td><strong>No data backups</strong></td>
+              <td>Permanent, unrecoverable data loss from ransomware</td>
+              <td>Automated, off-site, immutable 3-2-1 backups</td>
+            </tr>
+            <tr>
+              <td><strong>Unencrypted sensitive data</strong></td>
+              <td>Data exposure upon disk theft or network snooping</td>
+              <td>AES-256 at rest &amp; TLS 1.3 in transit</td>
+            </tr>
+            <tr>
+              <td><strong>Poor employee awareness</strong></td>
+              <td>High phishing and social engineering success</td>
+              <td>Mandatory quarterly security training &amp; simulations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Figure Card 2: Security Controls -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/w2EiI55xzge0F3Bhd_yzFrfEnPs-aWj3duxuq_NHDQNB69K1HoaAoBwp-qDaiPrCdcZ0A0-qSLOgpE64RsgDh2lhKwrFeOgT_M0pIuLvErv4kBycJUi4S6Zo2jlt-tMbbiLkGhF4NKLTI5Qrbumy4lEKp8WSBGzMeJxhsqJVfqg?purpose=inline" 
+             alt="Essential types of cybersecurity controls explained" 
+             data-topic="Cybersecurity Controls">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 3.2:</strong> Defense-in-Depth Security Controls Classification</span>
+        <a href="https://www.6clicks.com/resources/blog/explaining-the-essential-types-of-cybersecurity-controls-by-implementation" target="_blank" rel="noopener">Source: 6clicks Enterprise GRC</a>
+      </div>
+    </div>
+
+    <!-- Section 3.5: 3 Categories of Security Controls -->
+    <section class="section" id="section-3-5">
+      <div class="section-header">
+        <h2 class="section-title">3.5 What is a Security Control?</h2>
+        <p class="section-lead">Safeguards, countermeasures, and mechanisms designed to reduce risk.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Administrative -->
+        <div class="card" style="border-top: 4px solid var(--color-blue);">
+          <span class="badge-tag">Category 1</span>
+          <h3 class="card-title">📜 Administrative Controls</h3>
+          <p class="card-desc">
+            Managerial policies, governance standards, guidelines, operational procedures, and employee handbooks.
+          </p>
+          <ul style="font-size: 0.85rem;">
+            <li>Acceptable Use Policies (AUP)</li>
+            <li>Password expiration rules</li>
+            <li>Employee background screening</li>
+            <li>Security awareness workshops</li>
+            <li>Incident response playbooks</li>
+          </ul>
+        </div>
+
+        <!-- Technical -->
+        <div class="card" style="border-top: 4px solid var(--color-cyan);">
+          <span class="badge-tag badge-emerald">Category 2</span>
+          <h3 class="card-title">💻 Technical Controls</h3>
+          <p class="card-desc">
+            Hardware and software countermeasures implemented directly into computing networks and applications.
+          </p>
+          <ul style="font-size: 0.85rem;">
+            <li>Next-Gen Firewalls (NGFW)</li>
+            <li>Intrusion Detection Systems (IDS/IPS)</li>
+            <li>End-to-End Encryption (AES, TLS)</li>
+            <li>Multi-Factor Authentication (MFA)</li>
+            <li>Antivirus and EDR agents</li>
+          </ul>
+        </div>
+
+        <!-- Physical -->
+        <div class="card" style="border-top: 4px solid var(--color-amber);">
+          <span class="badge-tag badge-amber">Category 3</span>
+          <h3 class="card-title">🏢 Physical Controls</h3>
+          <p class="card-desc">
+            Tangible real-world measures shielding buildings, datacenters, server racks, and cables from direct contact.
+          </p>
+          <ul style="font-size: 0.85rem;">
+            <li>Biometric badge scanners &amp; locks</li>
+            <li>Security guards and sign-in logs</li>
+            <li>CCTV recording systems</li>
+            <li>Fire suppression gas systems (FM-200)</li>
+            <li>Server rack lockboxes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3.6: Principle of Least Privilege -->
+    <section class="section" id="section-3-6">
+      <div class="section-header">
+        <h2 class="section-title">3.6 The Principle of Least Privilege (PoLP)</h2>
+        <p class="section-lead">Granting users and processes solely the minimal privileges required to perform assigned tasks.</p>
+      </div>
+
+      <p>
+        The <strong>Principle of Least Privilege (PoLP)</strong> dictates that any entity—user, application, process, or script—must be granted only the minimum permissions essential to its legitimate function, and for no longer than needed.
+      </p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Role in University SIS</th>
+              <th>Legitimate Appropriate Access</th>
+              <th>Prohibited / Restricted Access</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Student</strong></td>
+              <td>View personal class schedule, bill, and personal grades</td>
+              <td>Cannot edit grades, view other students, or access servers</td>
+            </tr>
+            <tr>
+              <td><strong>Teacher</strong></td>
+              <td>Enter and update grades for assigned course sections</td>
+              <td>Cannot view student financial debt or modify server configs</td>
+            </tr>
+            <tr>
+              <td><strong>Registrar</strong></td>
+              <td>Manage course registration statuses and verify degrees</td>
+              <td>Cannot directly change backend database schemas</td>
+            </tr>
+            <tr>
+              <td><strong>System Administrator</strong></td>
+              <td>Manage web servers, patch OS, and configure user permissions</td>
+              <td>Audited strictly through dual-control and session logs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-emerald">
+        <div class="callout-icon">🛡️</div>
+        <div class="callout-content">
+          <div class="callout-title">Why PoLP is Mandatory</div>
+          <p style="margin-bottom: 0; font-size: 0.9rem;">
+            If an attacker compromises a student account, PoLP ensures the attacker <strong>cannot</strong> compromise the entire university database or modify other accounts. It constrains the blast radius of any single credential breach.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3.7 & 3.8: Vulnerability Management & CVSS -->
+    <section class="section" id="section-3-7">
+      <div class="section-header">
+        <h2 class="section-title">3.7 Vulnerability Management Lifecycle &amp; CVSS</h2>
+        <p class="section-lead">A continuous 7-step hygiene process and industry-standard severity scoring.</p>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h3>The 7-Step Lifecycle</h3>
+          <ol style="font-size: 0.92rem; line-height: 1.8;">
+            <li><strong>Discover Assets:</strong> Catalog every server, laptop, and API endpoint.</li>
+            <li><strong>Scan for Vulnerabilities:</strong> Run tools like Nessus, OpenVAS, or Trivy.</li>
+            <li><strong>Evaluate Findings:</strong> Discard false positives and confirm real exposure.</li>
+            <li><strong>Prioritize Risk:</strong> Rank by CVSS severity and business criticality.</li>
+            <li><strong>Apply Patches / Fixes:</strong> Update firmware, recompile code, adjust configs.</li>
+            <li><strong>Verify &amp; Rescan:</strong> Test systems to ensure the flaw is remediated.</li>
+            <li><strong>Continuous Monitoring:</strong> Re-audit regularly as new exploits emerge.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3>Common Vulnerability Scoring System (CVSS)</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            CVSS is an open framework ranging from <strong>0.0 to 10.0</strong> to quantify the technical severity of software vulnerabilities.
+          </p>
+          <div class="table-responsive" style="margin: 0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>CVSS Score</th>
+                  <th>Severity Tier</th>
+                  <th>Urgency of Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>0.0</code></td>
+                  <td>None</td>
+                  <td>Informational only</td>
+                </tr>
+                <tr>
+                  <td><code>0.1 – 3.9</code></td>
+                  <td><span class="badge-tag badge-emerald">Low</span></td>
+                  <td>Scheduled maintenance cycle</td>
+                </tr>
+                <tr>
+                  <td><code>4.0 – 6.9</code></td>
+                  <td><span class="badge-tag badge-amber">Medium</span></td>
+                  <td>Patch within normal 30-day window</td>
+                </tr>
+                <tr>
+                  <td><code>7.0 – 8.9</code></td>
+                  <td><span class="badge-tag" style="background:rgba(249,115,22,0.2); color:#fb923c;">High</span></td>
+                  <td>Expedited patch within 7 days</td>
+                </tr>
+                <tr>
+                  <td><code>9.0 – 10.0</code></td>
+                  <td><span class="badge-tag badge-rose">Critical</span></td>
+                  <td>Emergency patch within 24 hours</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive CVSS Severity Widget -->
+      <div class="interactive-panel" style="margin-top: 2rem;">
+        <h3 style="margin-top: 0; color: #fff;">Interactive CVSS Severity Gauge</h3>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Drag the slider below to test different CVSS scores and see their severity classification and emergency response profile:
+        </p>
+
+        <div style="display:flex; align-items:center; gap: 1.5rem; margin: 1.5rem 0;">
+          <input type="range" id="cvss-slider" min="0" max="10" step="0.1" value="7.5" style="flex: 1; height: 8px; cursor: pointer; accent-color: var(--color-cyan);" oninput="updateCvss(this.value)">
+          <div id="cvss-score-badge" style="font-size: 1.8rem; font-weight: 800; font-family: var(--font-mono); color: #fb923c; min-width: 90px; text-align: center;">
+            7.5
+          </div>
+        </div>
+
+        <div id="cvss-details" class="callout" style="margin-bottom: 0;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Discussion Accordion -->
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">3.9 Lesson 3 Review &amp; Discussion</h2>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>1. What is the fundamental difference between a threat and a vulnerability?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          A <strong>threat</strong> is an external force or potential source of harm (like a hacker or hurricane). A <strong>vulnerability</strong> is an internal flaw or weakness in our own systems (like an unpatched library or weak password) that allows a threat to succeed.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>2. Why are weak passwords considered security vulnerabilities?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          Because weak passwords can be guessed or brute-forced in milliseconds using automated dictionaries, providing attackers with immediate unauthorized access without needing complex exploits.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>3. What are the three major categories of security controls?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          <strong>Administrative</strong> (policies, training, procedures), <strong>Technical</strong> (firewalls, encryption, MFA, software settings), and <strong>Physical</strong> (locks, guards, CCTV, biometrics, fire suppression).
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>4. Why should students never have administrator access to a university database?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          According to the Principle of Least Privilege, students only need to view their personal academic records. Granting administrator access violates this principle, creating severe risk of grade tampering, tuition debt wiping, or privacy leaks.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>5. Why is vulnerability management a continuous process rather than a one-time project?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          Software changes constantly through updates and new features, while security researchers and adversaries discover thousands of new Common Vulnerabilities and Exposures (CVEs) every single month. A secure system today can become vulnerable tomorrow.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>6. What is the primary purpose of CVSS?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          To provide an objective, standardized numeric score (0.0 to 10.0) reflecting the technical severity of software vulnerabilities, helping security teams prioritize which vulnerabilities must be patched first.
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Lesson Navigation -->
+    <div class="lesson-nav-bar">
+      <a href="../Lesson 2/index.html" class="lesson-nav-btn">
+        <span class="sub">Previous Lesson</span>
+        <span class="title">⬅️ Lesson 2: Threat Modeling</span>
+      </a>
+
+      <a href="../Activities/index.html" class="btn btn-secondary">
+        <span>🎯 Review Controls in Case Study</span>
+      </a>
+
+      <a href="../Lesson 4/index.html" class="lesson-nav-btn" style="text-align: right;">
+        <span class="sub">Next Lesson</span>
+        <span class="title">Lesson 4: Risk Assessment ➡️</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">Lesson 3: Vulnerabilities and Security Weaknesses</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Course Portal</a></li>
+        <li><a href="../Lesson 1/index.html">Lesson 1</a></li>
+        <li><a href="../Lesson 2/index.html">Lesson 2</a></li>
+        <li><a href="index.html">Lesson 3</a></li>
+        <li><a href="../Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="../Activities/index.html">Activities</a></li>
+        <li><a href="../Assessments/index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js"></script>
+  <script>
+    function updateCvss(val) {
+      val = parseFloat(val);
+      const scoreBadge = document.getElementById('cvss-score-badge');
+      const details = document.getElementById('cvss-details');
+      scoreBadge.textContent = val.toFixed(1);
+
+      if (val === 0.0) {
+        scoreBadge.style.color = '#94a3b8';
+        details.className = 'callout';
+        details.innerHTML = `<strong>Severity Tier: NONE (0.0)</strong><br><span style="font-size:0.88rem; color:#cbd5e1;">No security impact detected. System is running according to baseline specifications.</span>`;
+      } else if (val < 4.0) {
+        scoreBadge.style.color = '#34d399';
+        details.className = 'callout callout-emerald';
+        details.innerHTML = `<strong>Severity Tier: LOW (0.1 – 3.9)</strong><br><span style="font-size:0.88rem; color:#cbd5e1;">Minimal direct exploitability. Often requires physical local access or severe user interaction. Remediate in normal maintenance cycle.</span>`;
+      } else if (val < 7.0) {
+        scoreBadge.style.color = '#fbbf24';
+        details.className = 'callout callout-amber';
+        details.innerHTML = `<strong>Severity Tier: MEDIUM (4.0 – 6.9)</strong><br><span style="font-size:0.88rem; color:#cbd5e1;">Moderate threat. May involve partial data leakage or requiring specific preconditions. Prioritize patching within regular 30-day sprint.</span>`;
+      } else if (val < 9.0) {
+        scoreBadge.style.color = '#fb923c';
+        details.className = 'callout';
+        details.style.borderLeftColor = '#fb923c';
+        details.innerHTML = `<strong>Severity Tier: HIGH (7.0 – 8.9)</strong><br><span style="font-size:0.88rem; color:#cbd5e1;">Severe risk. Allows elevated privileges or sensitive record modification. Security patch or firewall rule required within 7 days.</span>`;
+      } else {
+        scoreBadge.style.color = '#f87171';
+        details.className = 'callout callout-rose';
+        details.innerHTML = `<strong>Severity Tier: CRITICAL (9.0 – 10.0)</strong><br><span style="font-size:0.88rem; color:#cbd5e1;">Catastrophic vulnerability! Remote zero-click code execution or complete database exposure. Deploy emergency hotfix or take service offline immediately.</span>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCvss(7.5);
+    });
+  </script>
+</body>
+</html>

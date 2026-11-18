@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: Introduction to Information Assurance &amp; The CIA Triad</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <a href="../index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="../index.html">🏠 Course Overview</option>
+        <option value="index.html" selected>Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="../Lesson 2/index.html">Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="../Lesson 3/index.html">Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="../Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="../Activities/index.html">🎯 Case Study &amp; Activities</option>
+        <option value="../Projects/index.html">💼 School Capstone Project</option>
+        <option value="../Assessments/index.html">📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="index.html" class="nav-link active">Lesson 1</a></li>
+      <li><a href="../Lesson 2/index.html" class="nav-link">Lesson 2</a></li>
+      <li><a href="../Lesson 3/index.html" class="nav-link">Lesson 3</a></li>
+      <li><a href="../Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="../Activities/index.html" class="nav-link">Activities</a></li>
+      <li><a href="../Assessments/index.html" class="nav-link">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span>Module 1</span>
+      <span>/</span>
+      <span class="current">Lesson 1: IA &amp; The CIA Triad</span>
+    </div>
+
+    <!-- Lesson Header Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag">Session 1 of 4 • 90 Minutes</span>
+      <h1 class="hero-title">LESSON 1: Introduction to Information Assurance and the CIA Triad</h1>
+      <p class="hero-subtitle">
+        Understand the comprehensive scope of Information Assurance beyond mere antivirus tools. Learn the three cornerstone pillars—Confidentiality, Integrity, and Availability—and evaluate real-world Student Information System (SIS) scenarios.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item"><span>📖 Lesson ID:</span> <strong>MOD1-LES01</strong></div>
+        <div class="meta-item"><span>⏱️ Duration:</span> <strong>90 Minutes</strong></div>
+        <div class="meta-item"><span>🎯 Key Focus:</span> <strong>CIA Triad, SIS Case, Security Controls</strong></div>
+      </div>
+    </section>
+
+    <!-- Figure Card 1: Online Image from curriculum -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/1h93hrHMFF4yR3jWDMwbD0TCmsEbQvSa2Ob97pWZSRL9YUxyX1rR1igwjTbfRgqIR1xL5hRDI3JcaiO2H9rU_hRf-OHRNDKcDxA1qJjv9VIr_smhcpLkGwfOFvMYgcrMph3ysAJxqFv-sWuJ8OrV99JJI6CtKwNTIWJVZ_rU6Xo?purpose=inline" 
+             alt="Estrategias de Seguridad Cibernética para Empresas" 
+             data-topic="Estrategias de Seguridad Cibernética">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 1.1:</strong> Enterprise Cybersecurity &amp; Information Assurance Architecture</span>
+        <a href="https://colciber.co/estrategias-de-seguridad-cibernetica-para-empresas/" target="_blank" rel="noopener">Source: Colciber Cybersecurity</a>
+      </div>
+    </div>
+
+    <!-- Section 1.1 -->
+    <section class="section" id="section-1-1">
+      <div class="section-header">
+        <h2 class="section-title">1.1 What is Information Assurance?</h2>
+        <p class="section-lead">The foundational discipline that safeguards data across its entire operational lifecycle.</p>
+      </div>
+
+      <p>
+        <strong>Information Assurance (IA)</strong> refers to the processes, policies, technologies, and practices used to protect information and information systems. Its purpose is to ensure that information is:
+      </p>
+
+      <div class="grid-4">
+        <div class="card" style="padding: 1.25rem;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🔒</div>
+          <h4 style="margin: 0 0 0.35rem 0;">Unauthorized Access</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">Protected strictly from illicit view or exfiltration.</p>
+        </div>
+        <div class="card" style="padding: 1.25rem;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🎯</div>
+          <h4 style="margin: 0 0 0.35rem 0;">Accurate &amp; Trustworthy</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">Protected against illicit alteration, forgery, or noise.</p>
+        </div>
+        <div class="card" style="padding: 1.25rem;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">⚡</div>
+          <h4 style="margin: 0 0 0.35rem 0;">Reliably Available</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">Accessible to authenticated personnel whenever demanded.</p>
+        </div>
+        <div class="card" style="padding: 1.25rem;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">🔄</div>
+          <h4 style="margin: 0 0 0.35rem 0;">Complete Lifecycle</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-muted);">Safeguarded during generation, storage, transit, and disposal.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-content">
+          <div class="callout-title">Critical Insight: More Than Software</div>
+          <p style="margin-bottom: 0; font-size: 0.9rem;">
+            Information Assurance is <strong>not limited</strong> to installing antivirus software or creating passwords. It encompasses <strong>people, technology, governance policies, operating procedures, and physical facility security</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Real World SIS Example Box -->
+      <div class="card" style="margin-top: 1.75rem; border-color: rgba(56, 189, 248, 0.3);">
+        <span class="badge-tag">Case Study Reference</span>
+        <h3 class="card-title">🏫 Real-World Example: University Student Information System (SIS)</h3>
+        <p>Imagine a university that operates an online Student Information System (SIS). The system stores and manages:</p>
+        <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.5rem; list-style-position: inside; margin-left: 0;">
+          <li>👤 Student names and personal identifying info</li>
+          <li>🆔 Student identification numbers &amp; SSN/IDs</li>
+          <li>📊 Academic grades and transcript records</li>
+          <li>📝 Course enrollment and schedule statuses</li>
+          <li>💳 Tuition billing and payment transactions</li>
+          <li>🔑 Faculty, registrar, and administrator credentials</li>
+        </ul>
+        <p style="margin-top: 0.75rem; font-size: 0.92rem; color: #94a3b8;">
+          The university must ensure that unauthorized individuals cannot snoop on records, student grades cannot be altered illicitly, and the system does not crash under high registration load. This is precisely where Information Assurance operates.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 1.2 -->
+    <section class="section" id="section-1-2">
+      <div class="section-header">
+        <h2 class="section-title">1.2 Why is Information Assurance Important?</h2>
+        <p class="section-lead">The business, legal, and operational justification for robust cybersecurity controls.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="font-size: 1.15rem; color: var(--color-cyan); margin-top: 0;">Strategic IA Objectives</h3>
+          <ul style="font-size: 0.92rem; line-height: 1.8;">
+            <li>🛡️ Protect sensitive and confidential information from espionage.</li>
+            <li>🛑 Prevent unauthorized access, privilege escalation, and attacks.</li>
+            <li>✅ Maintain the precision, accuracy, and provenance of stored records.</li>
+            <li>⏱️ Ensure continuous access to critical workflows and platforms.</li>
+            <li>🏛️ Safeguard organizational credibility and brand reputation.</li>
+            <li>💰 Minimize financial liabilities and regulatory penalties.</li>
+            <li>🤝 Preserve user, partner, and customer institutional trust.</li>
+            <li>⚖️ Comply with statutory data privacy laws (e.g., GDPR, FERPA, DPA).</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.15rem; color: #fff; margin-top: 0; margin-bottom: 0.85rem;">Concrete Situation Mapping</h3>
+          <div class="table-responsive" style="margin: 0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Real-World Situation</th>
+                  <th>Core IA Objective</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A hacker attempts to access student database records.</td>
+                  <td><span class="badge-tag">Protect Information</span></td>
+                </tr>
+                <tr>
+                  <td>Someone maliciously changes a student's grade from 70 to 95.</td>
+                  <td><span class="badge-tag badge-emerald">Maintain Accuracy</span></td>
+                </tr>
+                <tr>
+                  <td>The enrollment portal crashes during peak matriculation day.</td>
+                  <td><span class="badge-tag badge-amber">Maintain Availability</span></td>
+                </tr>
+                <tr>
+                  <td>An employee leaks confidential faculty compensation spreadsheets.</td>
+                  <td><span class="badge-tag badge-rose">Prevent Disclosure</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Figure Card 2: Web App Security Testing -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/DuCd_c2ZLTyQ-v95VvgYy8Jp-j4M7FJ3Vs3iqUHCxCL_Z3cC1mWh72YLVFa1fIzhPeum-aMQZ65zms7xsxjsM1BEY4ClPE2F5JyR1xmHnv_zEboznQMB8I-Q3hxQBnozZK95RBX94gsrRD1EklYpRb-mF04wOozx0Cgi4StWJa8?purpose=inline" 
+             alt="What is Web Application Security Testing" 
+             data-topic="Application Security Testing">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure 1.2:</strong> Web Application Vulnerability &amp; CIA Testing Paradigm</span>
+        <a href="https://www.jc-cybersecurity.co.uk/what-is-web-application-security-testing-and-how-can-it-help" target="_blank" rel="noopener">Source: JC Cybersecurity UK</a>
+      </div>
+    </div>
+
+    <!-- Section 1.3 -->
+    <section class="section" id="section-1-3">
+      <div class="section-header">
+        <h2 class="section-title">1.3 Understanding the CIA Triad</h2>
+        <p class="section-lead">The golden standard triad used to plan, implement, and evaluate all security mechanisms.</p>
+      </div>
+
+      <!-- Interactive CIA Triad Explorer Component -->
+      <div class="interactive-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <h3 style="margin: 0; color: #fff;">Interactive CIA Triad Explorer</h3>
+            <p style="margin: 0.3rem 0 0 0; font-size: 0.88rem; color: var(--text-muted);">Click any pillar below to inspect its definition, technical controls, and failure scenario.</p>
+          </div>
+          <span class="badge-tag badge-emerald">Interactive Widget</span>
+        </div>
+
+        <div class="triad-grid">
+          <div class="triad-col active" onclick="selectPillar('C')">
+            <div class="triad-letter">C</div>
+            <div class="triad-name">Confidentiality</div>
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0;">"Who is permitted to view the data?"</p>
+          </div>
+          <div class="triad-col" onclick="selectPillar('I')">
+            <div class="triad-letter">I</div>
+            <div class="triad-name">Integrity</div>
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0;">"Is the data accurate and uncorrupted?"</p>
+          </div>
+          <div class="triad-col" onclick="selectPillar('A')">
+            <div class="triad-letter">A</div>
+            <div class="triad-name">Availability</div>
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0;">"Can authorized users access it when needed?"</p>
+          </div>
+        </div>
+
+        <div id="pillar-detail-display" style="margin-top: 1.5rem; padding: 1.5rem; background: rgba(17, 24, 39, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+      <!-- Detailed Breakdown of Each Pillar -->
+      <div style="margin-top: 2.5rem;">
+        <!-- A. Confidentiality -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div class="brand-icon" style="background: linear-gradient(135deg, #0ea5e9, #3b82f6);">C</div>
+            <h3 style="margin: 0; font-size: 1.4rem;">A. Confidentiality</h3>
+          </div>
+          <p>
+            <strong>Confidentiality</strong> means ensuring that information is only accessible to individuals, systems, or organizations that have explicit permission to access it. In simple terms: <em>Only authorized people should be able to see sensitive information.</em>
+          </p>
+          
+          <h4>Real-World University Rules</h4>
+          <ul style="font-size: 0.92rem;">
+            <li>Students can only view their own individual academic records.</li>
+            <li>Professors can only inspect records of students registered in their assigned classes.</li>
+            <li>Registrars can view institutional graduation compliance details.</li>
+            <li>Cryptographic credentials (passwords, tokens) are hashed and unreadable by unauthorized parties.</li>
+          </ul>
+
+          <h4>Security Controls for Confidentiality</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Security Control</th>
+                  <th>Technical Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Authentication</strong></td>
+                  <td>Confirms and verifies the claimed identity of a user (passwords, certificates).</td>
+                </tr>
+                <tr>
+                  <td><strong>Authorization</strong></td>
+                  <td>Enforces what actions and files an authenticated identity can view or execute.</td>
+                </tr>
+                <tr>
+                  <td><strong>Encryption</strong></td>
+                  <td>Transforms plaintext into unreadable ciphertext (AES-256, TLS 1.3) without the key.</td>
+                </tr>
+                <tr>
+                  <td><strong>Access Control</strong></td>
+                  <td>Role-Based Access Control (RBAC) and Access Control Lists (ACLs) limiting access.</td>
+                </tr>
+                <tr>
+                  <td><strong>Multi-Factor Authentication (MFA)</strong></td>
+                  <td>Demands two or more distinct factors (Password + Authenticator App OTP).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-rose">
+            <div class="callout-icon">🚨</div>
+            <div class="callout-content">
+              <div class="callout-title">Scenario Challenge</div>
+              <p style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                <em>A university employee accidentally emails a sensitive spreadsheet containing 2,000 students' home addresses, financial balances, and full grades to an outside sales vendor.</em>
+              </p>
+              <p style="margin-bottom: 0; font-size: 0.9rem; color: #a7f3d0;">
+                <strong>Which CIA principle is breached?</strong> Answer: <strong>Confidentiality</strong>, because private information was disclosed to an unauthorized entity.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- B. Integrity -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div class="brand-icon" style="background: linear-gradient(135deg, #10b981, #059669);">I</div>
+            <h3 style="margin: 0; font-size: 1.4rem;">B. Integrity</h3>
+          </div>
+          <p>
+            <strong>Integrity</strong> means ensuring that information remains accurate, complete, consistent, and protected against unauthorized or improper modification. In simple terms: <em>Information should never be tampered with or changed without proper authorization.</em>
+          </p>
+
+          <h4>Real-World University Rules</h4>
+          <ul style="font-size: 0.92rem;">
+            <li>Students' marks must never be altered without official faculty signature.</li>
+            <li>Financial ledgers must accurately mirror bank payment gateway settlements.</li>
+            <li>System audit trails must record exactly who logged in and when without record erasure.</li>
+          </ul>
+
+          <h4>Security Controls for Integrity</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Security Control</th>
+                  <th>Technical Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Cryptographic Hashing</strong></td>
+                  <td>Produces a fixed one-way hash (SHA-256) to detect any bit-level tampering.</td>
+                </tr>
+                <tr>
+                  <td><strong>Digital Signatures</strong></td>
+                  <td>Cryptographically binds an identity to a payload, verifying origin and non-tampering.</td>
+                </tr>
+                <tr>
+                  <td><strong>Audit Logs</strong></td>
+                  <td>Immutable, write-once event logs recording changes, user actions, and timestamps.</td>
+                </tr>
+                <tr>
+                  <td><strong>Database Constraints</strong></td>
+                  <td>Foreign keys, unique checks, and validation rules that prevent illegal record states.</td>
+                </tr>
+                <tr>
+                  <td><strong>Version Control</strong></td>
+                  <td>Tracks chronological changes, allowing audit comparisons and rollbacks (e.g. Git).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-rose">
+            <div class="callout-icon">🚨</div>
+            <div class="callout-content">
+              <div class="callout-title">Scenario Challenge</div>
+              <p style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                <em>A student notices their Midterm grade changed overnight in the portal from 95 down to 65, despite the instructor having submitted no grade revisions.</em>
+              </p>
+              <p style="margin-bottom: 0; font-size: 0.9rem; color: #a7f3d0;">
+                <strong>Which CIA principle is breached?</strong> Answer: <strong>Integrity</strong>, because authorized record values were altered improperly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- C. Availability -->
+        <div class="card">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div class="brand-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">A</div>
+            <h3 style="margin: 0; font-size: 1.4rem;">C. Availability</h3>
+          </div>
+          <p>
+            <strong>Availability</strong> means ensuring that information systems, networks, and services are readily accessible to authorized users whenever they are needed. In simple terms: <em>The system must be working and accessible when users need it.</em>
+          </p>
+
+          <h4>Real-World University Rules</h4>
+          <ul style="font-size: 0.92rem;">
+            <li>The online enrollment portal stays up and responsive when 15,000 students register at 8:00 AM.</li>
+            <li>Faculty can access class attendance sheets during active class hours.</li>
+            <li>Emergency notification platforms can dispatch SMS warnings without server downtime.</li>
+          </ul>
+
+          <h4>Security Controls for Availability</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Security Control</th>
+                  <th>Technical Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Regular Backups</strong></td>
+                  <td>Encrypted snapshot backups (3-2-1 rule) enabling fast restoration after loss.</td>
+                </tr>
+                <tr>
+                  <td><strong>Redundancy &amp; Failover</strong></td>
+                  <td>Duplicate power supplies, RAID storage arrays, and secondary hot-standby servers.</td>
+                </tr>
+                <tr>
+                  <td><strong>Disaster Recovery (DR)</strong></td>
+                  <td>Formal business continuity plans to restore services after catastrophic events.</td>
+                </tr>
+                <tr>
+                  <td><strong>Load Balancing</strong></td>
+                  <td>Evenly distributes inbound web requests across multiple server instances.</td>
+                </tr>
+                <tr>
+                  <td><strong>DDoS Protection</strong></td>
+                  <td>Scrubbing centers and rate limiters (e.g. Cloudflare) that absorb traffic floods.</td>
+                </tr>
+                <tr>
+                  <td><strong>Uninterruptible Power Supply (UPS)</strong></td>
+                  <td>Battery backups and on-site diesel generators preventing sudden hardware outages.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-rose">
+            <div class="callout-icon">🚨</div>
+            <div class="callout-content">
+              <div class="callout-title">Scenario Challenge</div>
+              <p style="margin-bottom: 0.35rem; font-size: 0.9rem;">
+                <em>On the opening morning of student enrollment, the web server crashes because a botnet floods port 443 with millions of junk requests.</em>
+              </p>
+              <p style="margin-bottom: 0; font-size: 0.9rem; color: #a7f3d0;">
+                <strong>Which CIA principle is breached?</strong> Answer: <strong>Availability</strong>, because legitimate students are locked out of the service.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1.4 -->
+    <section class="section" id="section-1-4">
+      <div class="section-header">
+        <h2 class="section-title">1.4 Comparing the Three CIA Principles</h2>
+        <p class="section-lead">A unified perspective on how these principles intersect and compound during modern attacks.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Principle</th>
+              <th>Primary Focus</th>
+              <th>Guiding Question</th>
+              <th>Concrete Defense Goal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Confidentiality</strong></td>
+              <td>Information Privacy</td>
+              <td>Who can see the data?</td>
+              <td>Preventing unauthorized data leaks &amp; snooping</td>
+            </tr>
+            <tr>
+              <td><strong>Integrity</strong></td>
+              <td>Data Trustworthiness</td>
+              <td>Is the data accurate?</td>
+              <td>Preventing unauthorized manipulation or forgery</td>
+            </tr>
+            <tr>
+              <td><strong>Availability</strong></td>
+              <td>System Accessibility</td>
+              <td>Can users access the service?</td>
+              <td>Preventing outages, denial of service &amp; bottlenecks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-purple">
+        <div class="callout-icon">💡</div>
+        <div class="callout-content">
+          <div class="callout-title">Compound Breach Case: Modern Ransomware</div>
+          <p style="margin-bottom: 0.5rem; font-size: 0.92rem;">
+            A single sophisticated cyberattack frequently attacks <strong>all three principles at once</strong>:
+          </p>
+          <ul style="margin-bottom: 0; font-size: 0.88rem;">
+            <li><strong>Breaches Confidentiality:</strong> Threat actors exfiltrate sensitive student/patient records before encryption to blackmail victims (double extortion).</li>
+            <li><strong>Breaches Integrity:</strong> The malware scrambles file contents and alters boot records.</li>
+            <li><strong>Breaches Availability:</strong> Legitimate system users are completely locked out from accessing operations.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1.5 -->
+    <section class="section" id="section-1-5">
+      <div class="section-header">
+        <h2 class="section-title">1.5 Lesson 1 Discussion Questions</h2>
+        <p class="section-lead">Test your conceptual retention. Click each question to expand and review the model answer.</p>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>1. Why is Information Assurance important to schools, businesses, and government organizations?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          Institutions rely heavily on digital systems for core functions. IA safeguards sensitive intellectual property and student privacy, prevents catastrophic financial theft, guarantees legal compliance (FERPA, GDPR), and ensures public trust and organizational continuity.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>2. What is the difference between confidentiality and integrity?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          <strong>Confidentiality</strong> focuses on <em>viewing permissions</em>—preventing unauthorized parties from reading sensitive data. <strong>Integrity</strong> focuses on <em>accuracy and consistency</em>—preventing unauthorized parties from modifying or falsifying data.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>3. Can a system be confidential but unavailable? Explain with an example.</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          <strong>Yes.</strong> For instance, a hard drive can be fully encrypted with AES-256 (maintaining 100% confidentiality because no one without the key can read it), but if the drive is physically smashed, disconnected, or locked down by ransomware, it is completely unavailable to authorized personnel.
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>4. Why should organizations maintain backups? Which CIA principle does this primarily support?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          Backups allow organizations to restore operations and data after hardware failures, ransomware incidents, or accidental deletion. This primarily protects <strong>Availability</strong> (allowing system restoration), while also assisting <strong>Integrity</strong> (reverting corrupted files to known clean baselines).
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>5. What catastrophic consequences could happen if a university fails to protect its student database?</span>
+          <span class="accordion-icon">➕</span>
+        </div>
+        <div class="accordion-content">
+          Potential consequences include widespread identity theft of students and alumni, massive financial fines from regulatory bodies, fraudulent degree conferral, severe brand damage, student lawsuits, and paralyzing campus shutdowns.
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Lesson Navigation -->
+    <div class="lesson-nav-bar">
+      <a href="../index.html" class="lesson-nav-btn">
+        <span class="sub">Previous</span>
+        <span class="title">⬅️ Course Overview</span>
+      </a>
+
+      <a href="../Activities/index.html" class="btn btn-secondary">
+        <span>🎯 View Case Study Labs</span>
+      </a>
+
+      <a href="../Lesson 2/index.html" class="lesson-nav-btn" style="text-align: right;">
+        <span class="sub">Next Lesson</span>
+        <span class="title">Lesson 2: Threat Modeling ➡️</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">Lesson 1: Introduction to Information Assurance and the CIA Triad</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Course Portal</a></li>
+        <li><a href="index.html">Lesson 1</a></li>
+        <li><a href="../Lesson 2/index.html">Lesson 2</a></li>
+        <li><a href="../Lesson 3/index.html">Lesson 3</a></li>
+        <li><a href="../Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="../Activities/index.html">Activities</a></li>
+        <li><a href="../Assessments/index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js"></script>
+  <script>
+    const pillarData = {
+      C: {
+        title: "Confidentiality (Privacy & Secrecy)",
+        badge: "Pillar 1",
+        color: "cyan",
+        summary: "Ensures information is shielded from unauthorized observation or interception.",
+        examples: ["Student transcript privacy", "Teacher grading keys", "Encrypted password storage"],
+        controls: ["Role-Based Access Control (RBAC)", "AES-256 & TLS 1.3 Encryption", "Multi-Factor Authentication (MFA)"],
+        scenario: "<strong>Vulnerability Case:</strong> An attacker sniffing cleartext Wi-Fi traffic steals unencrypted login cookies to impersonate an administrator."
+      },
+      I: {
+        title: "Integrity (Accuracy & Authenticity)",
+        badge: "Pillar 2",
+        color: "emerald",
+        summary: "Guarantees data has not been secretly tampered with, deleted, or fabricated.",
+        examples: ["Immutable financial balance logs", "Exact grade calculations", "Verified software updates"],
+        controls: ["SHA-256 Cryptographic Hashes", "Digital Certificates / PKI", "Immutable Audit Logging"],
+        scenario: "<strong>Vulnerability Case:</strong> A malicious insider alters the tuition balance table in MySQL to zero out their personal tuition debt."
+      },
+      A: {
+        title: "Availability (Readiness & Uptime)",
+        badge: "Pillar 3",
+        color: "amber",
+        summary: "Guarantees infrastructure and assets are operational and accessible on demand.",
+        examples: ["Student registration portal uptime", "Emergency siren notifications", "Continuous cloud database access"],
+        controls: ["DDoS Mitigation (Cloudflare)", "Automated Failover & Clustering", "Uninterruptible Power Supplies (UPS)"],
+        scenario: "<strong>Vulnerability Case:</strong> A botnet floods the university registration gateway with 200,000 HTTP requests per second, taking the site offline for 6 hours."
+      }
+    };
+
+    function selectPillar(p) {
+      document.querySelectorAll('.triad-col').forEach(c => c.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      const data = pillarData[p];
+      const display = document.getElementById('pillar-detail-display');
+      display.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+          <h4 style="margin:0; color:#fff; font-size:1.25rem;">${data.title}</h4>
+          <span class="badge-tag badge-${data.color}">${data.badge}</span>
+        </div>
+        <p style="color:#cbd5e1; font-size:0.95rem; margin-bottom:1rem;">${data.summary}</p>
+        <div class="grid-2" style="margin: 0.5rem 0;">
+          <div style="background:rgba(30,41,59,0.5); padding:1rem; border-radius:8px;">
+            <strong style="color:var(--color-cyan); font-size:0.85rem; text-transform:uppercase;">Primary Controls</strong>
+            <ul style="margin:0.5rem 0 0 1.2rem; font-size:0.85rem;">
+              ${data.controls.map(c => `<li>${c}</li>`).join('')}
+            </ul>
+          </div>
+          <div style="background:rgba(30,41,59,0.5); padding:1rem; border-radius:8px;">
+            <strong style="color:var(--color-emerald); font-size:0.85rem; text-transform:uppercase;">Key Real-World Applications</strong>
+            <ul style="margin:0.5rem 0 0 1.2rem; font-size:0.85rem;">
+              ${data.examples.map(e => `<li>${e}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+        <div class="callout callout-rose" style="margin-top:1rem; margin-bottom:0; padding:0.85rem 1rem;">
+          <div style="font-size:0.85rem;">${data.scenario}</div>
+        </div>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      selectPillar('C');
+    });
+  </script>
+</body>
+</html>

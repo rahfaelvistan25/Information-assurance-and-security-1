@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hands-On Activities &amp; SIS Case Study | INFOSEC 101</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <a href="../index.html" class="nav-brand">
+      <div class="brand-icon">🛡️</div>
+      <div class="brand-title">
+        <span>INFOSEC 101</span>
+        <span>Information Assurance &amp; Security</span>
+      </div>
+    </a>
+
+    <div class="nav-selector">
+      <label for="lesson-quick-select">Select Lesson:</label>
+      <select id="lesson-quick-select">
+        <option value="../index.html">🏠 Course Overview</option>
+        <option value="../Lesson 1/index.html">Lesson 1: CIA Triad &amp; IA Intro</option>
+        <option value="../Lesson 2/index.html">Lesson 2: Threat Modeling &amp; STRIDE</option>
+        <option value="../Lesson 3/index.html">Lesson 3: Vulnerabilities &amp; Controls</option>
+        <option value="../Lesson 4/index.html">Lesson 4: Risk Assessment &amp; Frameworks</option>
+        <option value="index.html" selected>🎯 Case Study &amp; Activities</option>
+        <option value="../Projects/index.html">💼 School Capstone Project</option>
+        <option value="../Assessments/index.html">📝 50-Point Examination &amp; Key</option>
+      </select>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="../index.html" class="nav-link">Home</a></li>
+      <li><a href="../Lesson 1/index.html" class="nav-link">Lesson 1</a></li>
+      <li><a href="../Lesson 2/index.html" class="nav-link">Lesson 2</a></li>
+      <li><a href="../Lesson 3/index.html" class="nav-link">Lesson 3</a></li>
+      <li><a href="../Lesson 4/index.html" class="nav-link">Lesson 4</a></li>
+      <li><a href="index.html" class="nav-link active">Activities</a></li>
+      <li><a href="../Projects/index.html" class="nav-link">Project</a></li>
+      <li><a href="../Assessments/index.html" class="nav-link">Exam</a></li>
+    </ul>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <span>Module 1</span>
+      <span>/</span>
+      <span class="current">Practical Activities &amp; Case Study</span>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <span class="badge-tag badge-emerald">Interactive Laboratory Section</span>
+      <h1 class="hero-title">Practical Application: Information Assurance Case Study</h1>
+      <p class="hero-subtitle">
+        Apply the complete spectrum of Module 1 theories to a realistic institutional scenario: The University Student Enrollment System. Complete all four hands-on exercises to evaluate CIA principles, map STRIDE threats, score risks, and engineer defense controls.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-item"><span>🏫 Context:</span> <strong>University Student Enrollment System</strong></div>
+        <div class="meta-item"><span>🎯 Total Activities:</span> <strong>4 Hands-On Labs</strong></div>
+        <div class="meta-item"><span>💻 Format:</span> <strong>Interactive Instant Feedback &amp; Verification</strong></div>
+      </div>
+    </section>
+
+    <!-- Figure Card: RIT SIS Case Study Image -->
+    <div class="figure-card">
+      <div class="figure-img-wrap">
+        <img src="https://images.openai.com/static-rsc-4/HzKDo-3NktOvO-Y_gEwQg6DOl5YlwG3Vp7JCl8D7fUmTa_lNW2CloCI8r7bWJFf0pKrdX0J_Zpmb29kFplqa56_Qq_4uLs2IIM4EJCOK-sYC5KAhdTJOSaoau0koByxzdQM5hs2hPAx1RZHFNkkvRcZIj80_148GvW2LvjwkSNI?purpose=inline" 
+             alt="University Student Information System Case Study" 
+             data-topic="Student Information System">
+      </div>
+      <div class="figure-caption">
+        <span><strong>Figure A.1:</strong> University Student Information System (SIS) Portal Interface</span>
+        <a href="https://www.rit.edu/admissions/blog/how-use-rit-sis-guide-rit-students" target="_blank" rel="noopener">Source: RIT Admissions &amp; Aid</a>
+      </div>
+    </div>
+
+    <!-- Case Study Background Card -->
+    <section class="section">
+      <div class="card" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(15, 23, 42, 0.9);">
+        <span class="badge-tag">Case Study Dossier</span>
+        <h3 class="card-title">📖 Background Dossier: University Student Enrollment System</h3>
+        <p>
+          A metropolitan university develops an online <strong>Student Enrollment System</strong> that enables 25,000 students to register for academic subjects, view official grades, submit tuition payments, and update personal identifying information.
+        </p>
+
+        <h4 style="color: #fff; margin-top: 1rem;">System User Roles:</h4>
+        <div class="grid-3" style="margin: 0.75rem 0 1.5rem 0;">
+          <div style="background: rgba(30, 41, 59, 0.6); padding: 1rem; border-radius: 8px;">
+            <strong style="color: var(--color-cyan);">👤 Students</strong>
+            <p style="font-size: 0.85rem; margin-top: 0.3rem; margin-bottom: 0;">Permitted to access personal profiles, enrollment schedules, and individual transcripts.</p>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.6); padding: 1rem; border-radius: 8px;">
+            <strong style="color: var(--color-emerald);">👨‍🏫 Faculty / Teachers</strong>
+            <p style="font-size: 0.85rem; margin-top: 0.3rem; margin-bottom: 0;">Authorized to manage grading sheets and class lists for their officially assigned sections.</p>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.6); padding: 1rem; border-radius: 8px;">
+            <strong style="color: var(--color-amber);">🔑 Administrators</strong>
+            <p style="font-size: 0.85rem; margin-top: 0.3rem; margin-bottom: 0;">Empowered to manage accounts, matriculation statuses, database setups, and system configs.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-rose" style="margin-bottom: 0;">
+          <div class="callout-icon">🚨</div>
+          <div class="callout-content">
+            <div class="callout-title">Audit Discovery: 6 Critical Security Deficiencies</div>
+            <ol style="margin-bottom: 0; font-size: 0.88rem; line-height: 1.7;">
+              <li><strong>Weak Passwords:</strong> Students are permitted to set trivial numeric passwords like <code>12345678</code>.</li>
+              <li><strong>Misconfigured Database:</strong> The MySQL database port is openly reachable without encryption or IP filtering.</li>
+              <li><strong>Broken Object Level Authorization:</strong> Students can view other students' records simply by modifying the student ID query parameter in the URL.</li>
+              <li><strong>Zero Redundancy:</strong> There are no regular or automated off-site database backups.</li>
+              <li><strong>Severe Server Crashes:</strong> The web portal frequently crashes during registration peak traffic windows.</li>
+              <li><strong>Shared Administrative Credentials:</strong> Administrators use a single shared root account without individual logins or MFA.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITY 1: IDENTIFY THE CIA TRIAD -->
+    <section class="section" id="act-1">
+      <div class="section-header">
+        <h2 class="section-title">Activity 1: Identify the CIA Triad</h2>
+        <p class="section-lead">Select which CIA principle (Confidentiality, Integrity, or Availability) is primarily compromised in each situation.</p>
+      </div>
+
+      <div class="card">
+        <div id="act1-items">
+          <!-- Item 1 -->
+          <div class="quiz-item" style="margin-bottom: 1rem;">
+            <div class="question-text">1. Students can view other students' private information by altering the URL ID parameter.</div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(1, 'C', this)">Confidentiality</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(1, 'I', this)">Integrity</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(1, 'A', this)">Availability</button>
+            </div>
+            <div id="act1-fb-1" class="feedback-box"></div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="quiz-item" style="margin-bottom: 1rem;">
+            <div class="question-text">2. An unauthorized user modifies official student grade records in the database.</div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(2, 'C', this)">Confidentiality</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(2, 'I', this)">Integrity</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(2, 'A', this)">Availability</button>
+            </div>
+            <div id="act1-fb-2" class="feedback-box"></div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="quiz-item" style="margin-bottom: 1rem;">
+            <div class="question-text">3. The enrollment website becomes completely unresponsive during registration rush hours.</div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(3, 'C', this)">Confidentiality</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(3, 'I', this)">Integrity</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(3, 'A', this)">Availability</button>
+            </div>
+            <div id="act1-fb-3" class="feedback-box"></div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="quiz-item" style="margin-bottom: 1rem;">
+            <div class="question-text">4. An external cyber attacker successfully steals administrator login credentials.</div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(4, 'C', this)">Confidentiality</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(4, 'I', this)">Integrity</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(4, 'A', this)">Availability</button>
+            </div>
+            <div id="act1-fb-4" class="feedback-box"></div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="quiz-item" style="margin-bottom: 0;">
+            <div class="question-text">5. Tuition payment ledger records are secretly modified without bank authorization.</div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(5, 'C', this)">Confidentiality</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(5, 'I', this)">Integrity</button>
+              <button class="btn btn-secondary btn-sm" onclick="checkAct1(5, 'A', this)">Availability</button>
+            </div>
+            <div id="act1-fb-5" class="feedback-box"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITY 2: THREAT MODELING STRIDE -->
+    <section class="section" id="act-2">
+      <div class="section-header">
+        <h2 class="section-title">Activity 2: Threat Modeling with STRIDE</h2>
+        <p class="section-lead">Map each security incident in the enrollment system to its exact STRIDE category.</p>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 45%;">Security Incident Description</th>
+              <th style="width: 35%;">Select STRIDE Category</th>
+              <th>Status / Feedback</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. An attacker uses a stolen administrator username and password to log in.</td>
+              <td>
+                <select id="stride-sel-1" style="width:100%; padding:0.4rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:4px;" onchange="checkStride(1)">
+                  <option value="">-- Choose STRIDE --</option>
+                  <option value="S">Spoofing</option>
+                  <option value="T">Tampering</option>
+                  <option value="R">Repudiation</option>
+                  <option value="I">Information Disclosure</option>
+                  <option value="D">Denial of Service</option>
+                  <option value="E">Elevation of Privilege</option>
+                </select>
+              </td>
+              <td id="stride-stat-1" style="font-weight:600;">-</td>
+            </tr>
+
+            <tr>
+              <td>2. Someone modifies enrolled course codes and exam grades in the database.</td>
+              <td>
+                <select id="stride-sel-2" style="width:100%; padding:0.4rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:4px;" onchange="checkStride(2)">
+                  <option value="">-- Choose STRIDE --</option>
+                  <option value="S">Spoofing</option>
+                  <option value="T">Tampering</option>
+                  <option value="R">Repudiation</option>
+                  <option value="I">Information Disclosure</option>
+                  <option value="D">Denial of Service</option>
+                  <option value="E">Elevation of Privilege</option>
+                </select>
+              </td>
+              <td id="stride-stat-2" style="font-weight:600;">-</td>
+            </tr>
+
+            <tr>
+              <td>3. A student denies submitting a course drop request, and no audit logs exist to prove who performed it.</td>
+              <td>
+                <select id="stride-sel-3" style="width:100%; padding:0.4rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:4px;" onchange="checkStride(3)">
+                  <option value="">-- Choose STRIDE --</option>
+                  <option value="S">Spoofing</option>
+                  <option value="T">Tampering</option>
+                  <option value="R">Repudiation</option>
+                  <option value="I">Information Disclosure</option>
+                  <option value="D">Denial of Service</option>
+                  <option value="E">Elevation of Privilege</option>
+                </select>
+              </td>
+              <td id="stride-stat-3" style="font-weight:600;">-</td>
+            </tr>
+
+            <tr>
+              <td>4. An unauthorized individual downloads 5,000 student social security and contact profiles.</td>
+              <td>
+                <select id="stride-sel-4" style="width:100%; padding:0.4rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:4px;" onchange="checkStride(4)">
+                  <option value="">-- Choose STRIDE --</option>
+                  <option value="S">Spoofing</option>
+                  <option value="T">Tampering</option>
+                  <option value="R">Repudiation</option>
+                  <option value="I">Information Disclosure</option>
+                  <option value="D">Denial of Service</option>
+                  <option value="E">Elevation of Privilege</option>
+                </select>
+              </td>
+              <td id="stride-stat-4" style="font-weight:600;">-</td>
+            </tr>
+
+            <tr>
+              <td>5. Attackers blast the web server with high-bandwidth HTTP floods, crashing registration.</td>
+              <td>
+                <select id="stride-sel-5" style="width:100%; padding:0.4rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:4px;" onchange="checkStride(5)">
+                  <option value="">-- Choose STRIDE --</option>
+                  <option value="S">Spoofing</option>
+                  <option value="T">Tampering</option>
+                  <option value="R">Repudiation</option>
+                  <option value="I">Information Disclosure</option>
+                  <option value="D">Denial of Service</option>
+                  <option value="E">Elevation of Privilege</option>
+                </select>
+              </td>
+              <td id="stride-stat-5" style="font-weight:600;">-</td>
+            </tr>
+
+            <tr>
+              <td>6. A student account exploits an authorization flaw to acquire system administrator rights.</td>
+              <td>
+                <select id="stride-sel-6" style="width:100%; padding:0.4rem; background:#1e293b; color:#fff; border:1px solid var(--border-color); border-radius:4px;" onchange="checkStride(6)">
+                  <option value="">-- Choose STRIDE --</option>
+                  <option value="S">Spoofing</option>
+                  <option value="T">Tampering</option>
+                  <option value="R">Repudiation</option>
+                  <option value="I">Information Disclosure</option>
+                  <option value="D">Denial of Service</option>
+                  <option value="E">Elevation of Privilege</option>
+                </select>
+              </td>
+              <td id="stride-stat-6" style="font-weight:600;">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ACTIVITY 3: RISK ASSESSMENT & RANKING -->
+    <section class="section" id="act-3">
+      <div class="section-header">
+        <h2 class="section-title">Activity 3: Risk Assessment &amp; Priority Ranking</h2>
+        <p class="section-lead">Calculate Risk Scores using formula: \( \text{Risk Score} = \text{Likelihood} \times \text{Impact} \) (1 to 5 scale), then view automated ranking.</p>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Identified Risk Event</th>
+                <th>Likelihood (L)</th>
+                <th>Impact (I)</th>
+                <th>Calculated Score (\( L \times I \))</th>
+                <th>Priority Ranking</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Weak administrator passwords</strong></td>
+                <td><span class="badge-tag">4</span></td>
+                <td><span class="badge-tag badge-rose">5</span></td>
+                <td><strong style="color:var(--color-rose); font-size:1.1rem;">20 / 25</strong></td>
+                <td><span class="badge-tag badge-rose">Priority 1 (Highest)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Website downtime during enrollment</strong></td>
+                <td><span class="badge-tag">4</span></td>
+                <td><span class="badge-tag">4</span></td>
+                <td><strong style="color:#fb923c; font-size:1.1rem;">16 / 25</strong></td>
+                <td><span class="badge-tag" style="background:rgba(249,115,22,0.2); color:#fb923c;">Priority 2</span></td>
+              </tr>
+              <tr>
+                <td><strong>No database backups</strong></td>
+                <td><span class="badge-tag">3</span></td>
+                <td><span class="badge-tag badge-rose">5</span></td>
+                <td><strong style="color:#fbbf24; font-size:1.1rem;">15 / 25</strong></td>
+                <td><span class="badge-tag badge-amber">Priority 3 (Tie)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Unauthorized student record access</strong></td>
+                <td><span class="badge-tag">3</span></td>
+                <td><span class="badge-tag badge-rose">5</span></td>
+                <td><strong style="color:#fbbf24; font-size:1.1rem;">15 / 25</strong></td>
+                <td><span class="badge-tag badge-amber">Priority 3 (Tie)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Unencrypted sensitive information</strong></td>
+                <td><span class="badge-tag">3</span></td>
+                <td><span class="badge-tag">4</span></td>
+                <td><strong style="color:#38bdf8; font-size:1.1rem;">12 / 25</strong></td>
+                <td><span class="badge-tag">Priority 5</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-emerald" style="margin-top: 1rem; margin-bottom: 0;">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content">
+            <div class="callout-title">Strategic IT Takeaway</div>
+            <p style="font-size:0.88rem; margin:0;">
+              Because <em>Weak administrator passwords</em> scores <strong>20/25</strong>, the university IT steering committee must prioritize multi-factor authentication, account individualization, and password complexity before any other software enhancements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVITY 4: RECOMMEND SECURITY CONTROLS -->
+    <section class="section" id="act-4">
+      <div class="section-header">
+        <h2 class="section-title">Activity 4: Recommend Appropriate Security Controls</h2>
+        <p class="section-lead">Match institutional vulnerabilities with robust, industry-standard mitigation safeguards.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-left: 4px solid var(--color-cyan);">
+          <h4 style="margin: 0 0 0.5rem 0;">1. Weak Passwords</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Recommended Control:</strong></p>
+          <div style="background: rgba(30,41,59,0.7); padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+            ✅ Enforce minimum 12-character complex password policy, rate-limiting on login attempts, and mandatory Multi-Factor Authentication (MFA).
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-blue);">
+          <h4 style="margin: 0 0 0.5rem 0;">2. Unauthorized Record Access (IDOR)</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Recommended Control:</strong></p>
+          <div style="background: rgba(30,41,59,0.7); padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+            ✅ Implement server-side Role-Based Access Control (RBAC) validation verifying session tokens against requested student record IDs on every query.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-amber);">
+          <h4 style="margin: 0 0 0.5rem 0;">3. No Database Backups</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Recommended Control:</strong></p>
+          <div style="background: rgba(30,41,59,0.7); padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+            ✅ Automate daily 3-2-1 backup strategy (3 copies, 2 different media types, 1 immutable off-site/cloud snapshot) with weekly restoration tests.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-purple);">
+          <h4 style="margin: 0 0 0.5rem 0;">4. Unencrypted Sensitive Data</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Recommended Control:</strong></p>
+          <div style="background: rgba(30,41,59,0.7); padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+            ✅ Mandate TLS 1.3 encryption in transit for all web endpoints and AES-256 transparent data encryption (TDE) for database volumes at rest.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-rose);">
+          <h4 style="margin: 0 0 0.5rem 0;">5. Website Downtime During Enrollment</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Recommended Control:</strong></p>
+          <div style="background: rgba(30,41,59,0.7); padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+            ✅ Deploy elastic cloud auto-scaling, reverse-proxy load balancers (NGINX), and Cloudflare DDoS protection &amp; CDN caching.
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--color-emerald);">
+          <h4 style="margin: 0 0 0.5rem 0;">6. Shared Administrator Accounts</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Recommended Control:</strong></p>
+          <div style="background: rgba(30,41,59,0.7); padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; color: #a7f3d0;">
+            ✅ Abolish shared logins. Issue distinct individual administrative accounts with hardware FIDO2 MFA tokens and immutable SIEM audit trails.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <div class="lesson-nav-bar">
+      <a href="../Lesson 4/index.html" class="lesson-nav-btn">
+        <span class="sub">Previous Lesson</span>
+        <span class="title">⬅️ Lesson 4: Risk Frameworks</span>
+      </a>
+
+      <a href="../Projects/index.html" class="btn btn-primary">
+        <span>💼 Advance to School Capstone Project ➔</span>
+      </a>
+
+      <a href="../Assessments/index.html" class="lesson-nav-btn" style="text-align: right;">
+        <span class="sub">Evaluation</span>
+        <span class="title">50-Point Examination 📝 ➔</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom: 0.25rem; font-weight: 700; color: #fff;">Information Assurance and Security 1 (MWF 10:30am - 11:30am)</p>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0;">Case Study Activities: University Student Enrollment System</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../index.html">Course Portal</a></li>
+        <li><a href="../Lesson 1/index.html">Lesson 1</a></li>
+        <li><a href="../Lesson 2/index.html">Lesson 2</a></li>
+        <li><a href="../Lesson 3/index.html">Lesson 3</a></li>
+        <li><a href="../Lesson 4/index.html">Lesson 4</a></li>
+        <li><a href="index.html">Activities</a></li>
+        <li><a href="../Assessments/index.html">Assessments</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js"></script>
+  <script>
+    const act1Answers = {
+      1: { correct: 'C', exp: 'Confidentiality is breached because unauthorized students can observe private records belonging to peers.' },
+      2: { correct: 'I', exp: 'Integrity is violated because academic marks are altered without authorization.' },
+      3: { correct: 'A', exp: 'Availability is impaired because the system cannot be reached by authorized users.' },
+      4: { correct: 'C', exp: 'Confidentiality is broken because secret credentials were disclosed to an attacker.' },
+      5: { correct: 'I', exp: 'Integrity is breached because financial ledgers were falsified.' }
+    };
+
+    function checkAct1(q, choice, btn) {
+      const parent = btn.parentElement;
+      const fb = document.getElementById(`act1-fb-${q}`);
+      const ans = act1Answers[q];
+      
+      parent.querySelectorAll('button').forEach(b => {
+        b.classList.remove('btn-primary', 'btn-accent');
+        b.classList.add('btn-secondary');
+      });
+
+      fb.style.display = 'block';
+      if (choice === ans.correct) {
+        btn.classList.remove('btn-secondary');
+        btn.classList.add('btn-accent');
+        fb.className = 'feedback-box callout callout-emerald';
+        fb.innerHTML = `<strong>✅ Correct!</strong> ${ans.exp}`;
+      } else {
+        btn.classList.remove('btn-secondary');
+        btn.classList.add('btn-primary');
+        fb.className = 'feedback-box callout callout-rose';
+        fb.innerHTML = `<strong>❌ Not quite.</strong> ${ans.exp}`;
+      }
+    }
+
+    const strideAnswers = {
+      1: 'S', // Spoofing
+      2: 'T', // Tampering
+      3: 'R', // Repudiation
+      4: 'I', // Information Disclosure
+      5: 'D', // Denial of Service
+      6: 'E'  // Elevation of Privilege
+    };
+
+    function checkStride(q) {
+      const sel = document.getElementById(`stride-sel-${q}`);
+      const stat = document.getElementById(`stride-stat-${q}`);
+      const val = sel.value;
+
+      if (!val) {
+        stat.textContent = '-';
+        stat.style.color = 'var(--text-muted)';
+        return;
+      }
+
+      if (val === strideAnswers[q]) {
+        stat.textContent = '✅ Correct';
+        stat.style.color = '#34d399';
+      } else {
+        stat.textContent = '❌ Incorrect';
+        stat.style.color = '#f87171';
+      }
+    }
+  </script>
+</body>
+</html>
